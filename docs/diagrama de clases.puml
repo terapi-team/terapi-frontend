@@ -1,0 +1,187 @@
+@startuml TERAPI - VERSIÓN 06
+
+abstract class Usuario {
+    - id: int
+    - nombre: string
+    - email: string
+    - fechaNacimiento: Date
+    - password: string
+    - telefono: string
+
+    + iniciarSesion()
+    + cerrarSesion()
+    + cambiarContrasenia()
+}
+
+class Paciente {
+    - fechaRegistro: Date
+
+    + verHistorialCitas()
+    + metodoDePago()
+}
+
+class Terapeuta {
+    - descripcion: string
+    - experienciaAnios: int
+    - calificacionPromedio: float
+
+    + editarPerfil()
+    + grabarDocumento()
+}
+
+class Admin {
+    - rol: string
+
+    + aprobarTerapeuta()
+    + bloquearUsuario()
+    + verEstadisticas()
+}
+
+class Cita {
+    - id: int
+    - fecha: Date
+    - hora: Time
+    - tipo: string
+    - estado: string
+    - tarifa: float
+    - duracion: int
+
+    + unirseSesion()
+    + verChat()
+}
+
+class Modalidad {
+    - id: int
+    - nombre: string
+}
+
+class Especialidad {
+    - id: int
+    - nombre: string
+}
+
+class TerapeutaEspecialidad {
+    - id: int
+    - terapeuta_id: int
+    - especialidad_id: int
+}
+
+class Idioma {
+    - id: int
+    - nombre: string
+}
+
+class Pais {
+    - id: int
+    - nombre: string
+}
+
+class Genero {
+    - id: int
+    - nombre: string
+}
+
+class FormacionAcademica {
+    - id: int
+    - grado: string
+    - institucion: string
+}
+
+class Reseña {
+    - id: int
+    - puntaje: int
+    - comentario: string
+    - fecha: Date
+
+    + publicar()
+}
+
+class Notificacion {
+    - id: int
+    - mensaje: string
+    - fechaEnvio: Date
+    - vista: boolean
+
+    + enviar()
+    + marcarComoVista()
+}
+
+class Certificado {
+    - id: int
+    - nombre: string
+    - institucion: string
+    - fechaEmision: Date
+}
+
+class MetodoPago {
+    - id: int
+    - tipo: string
+    - numeroTarjeta: string
+    - vencimiento: Date
+    - nombreTitular: string
+    - tipoDocumento: string
+    - numeroDocumento: string
+}
+
+class Documento {
+    - id: int
+    - tipo: string
+    - nombreArchivo: string
+    - fechaSubida: Date
+    - aprobado: boolean
+    - estadoRevision: string
+    - comentarioRevisor: string
+}
+
+class Horario {
+    - id: int
+    - diaSemana: string
+    - horaInicio: Time
+    - horaFin: Time
+}
+
+class CuentaBancaria {
+    - banco: string
+    - tipoCuenta: string
+    - numeroCuenta: string
+    - titular: string
+    - ruc: string
+}
+
+' Herencias
+Usuario <|-- Paciente
+Usuario <|-- Terapeuta
+Usuario <|-- Admin
+
+' Relaciones paciente
+Paciente "1" -- "0..*" Reseña : escribe
+Paciente "1" -- "0..*" Cita : agenda
+Paciente "1" -- "0..*" MetodoPago : posee
+
+' Relaciones terapeuta y tabla intermedia
+Terapeuta "1" -- "1..*" TerapeutaEspecialidad
+Especialidad "1" -- "1..*" TerapeutaEspecialidad
+
+Terapeuta "1" -- "1..*" Idioma : habla
+Terapeuta "1" -- "1" Pais : pertenece
+Terapeuta "1" -- "1" Genero : tiene
+Terapeuta "1" -- "1..*" FormacionAcademica : cursa
+Terapeuta "1" -- "1..*" Certificado : posee
+Terapeuta "1" -- "1..*" Documento : sube
+Terapeuta "1" -- "0..*" Horario : define
+Terapeuta "1" -- "1" CuentaBancaria : registra
+Terapeuta "1" -- "0..*" Cita : atiende
+
+' Modalidad y Cita
+Cita "1" -- "1" Modalidad : tiene
+
+' Cita asociada a Método de Pago
+Cita "1" -- "1" MetodoPago : usa
+
+' Notificaciones
+Usuario "1" -- "0..*" Notificacion : recibe
+
+' Reseñas
+Reseña "0..*" -- "1" Terapeuta : para
+
+@enduml
