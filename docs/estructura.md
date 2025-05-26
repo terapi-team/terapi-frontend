@@ -11,10 +11,10 @@ terapi-frontend/
 │
 ├── assets/
 |   |
-│   ├── icons/
+│   ├── icons/ (Cambios ⭐)
 │   |   ├── book-open.svg
 │   |   ├── brain.svg
-│   |   ├── (Muchos archivos .svg)
+│   |   ├── (Muchos archivos .svg) (Nueva ✅)
 │   |   └── wallet.svg
 │   |
 │   ├── images/ (Nueva ✅)
@@ -44,15 +44,18 @@ terapi-frontend/
 │   ├── pages/
 |   |   |
 │   │   ├── change_password/
+│   │   |   ├── patient_change_password_controller.dart
 |   |   |   └── patient_change_password_page.dart
 |   |   |
 │   │   ├── edit_personal_info/
+│   │   |   ├── patient_edit_personal_info_controller.dart
 |   |   |   └── patient_edit_personal_info_page.dart
 |   |   |
 │   │   ├── help_center/
 |   |   |   └── patient_help_center_page.dart
 |   |   |
 │   │   ├── payment_methods/
+│   │   |   ├── patient_payment_methods_controller.dart
 |   |   |   └── patient_payment_methods_page.dart
 |   |   |
 │   │   ├── terms_and_conditions/
@@ -68,7 +71,7 @@ terapi-frontend/
 |   |
 │   ├── services/ (Nueva ✅)
 |   |
-│   └── main.dart
+│   └── main.dart (Cambios ⭐)
 │
 ├── linux/ (ASMM ❗❗)
 │
@@ -84,5 +87,5 @@ terapi-frontend/
 ├── .metadata
 ├── analysis_options.yaml
 ├── pubspec.lock
-├── pubspec.yaml
+├── pubspec.yaml (Cambios ⭐)
 └── README.md
