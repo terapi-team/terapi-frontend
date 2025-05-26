@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'bottom_nav_bar.dart';
+import 'main_app_bar.dart';
+
+import '../pages/home_search_appointments/home_search_appointments_page.dart'; // <- Cambio 🐯
 import '../pages/appointment.dart';
 import '../pages/chat.dart';
 import '../pages/profile.dart';
-import '../pages/search.dart';
-import 'bottom_nav_bar.dart';
-import 'main_app_bar.dart';
 
 class AppNavigation extends StatefulWidget {
   const AppNavigation({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _AppNavigationState extends State<AppNavigation> {
 
   // Lista de pantallas para la navegación principal
   final List<Widget> _mainPages = [
-    const SearchPage(),
+    const HomeSearchAppointmentsPage(), // <- Cambio 🐯
     const AppointmentsPage(),
     const ChatsPage(),
     const ProfilePage(),
@@ -49,7 +50,6 @@ class _AppNavigationState extends State<AppNavigation> {
       appBar: MainAppBar(
         title: 'Terapi',
         onLogout: () {
-          // Implementar lógica de logout
           print('Cerrando sesión...');
         },
       ),

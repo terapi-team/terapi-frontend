@@ -7,7 +7,7 @@
 
 terapi-frontend/
 │
-├── android/ (ASMM ❗❗)
+├── android/
 │
 ├── assets/
 |   |
@@ -23,18 +23,18 @@ terapi-frontend/
 │
 ├── docs/
 |   |
-│   ├── imgs/ (Nueva ✅)
-│   │   ├── Mockups/ (Nueva ✅)
-│   │   ├── Diagrama de Casos de Uso.png (Nueva ✅)
-│   │   ├── Diagrama de Clases.png (Nueva ✅)
-│   │   └── Diagrama de Despliegue.png  (Nueva ✅)
+│   ├── imgs/
+│   │   ├── Mockups/
+│   │   ├── Diagrama de Casos de Uso.png
+│   │   ├── Diagrama de Clases.png
+│   │   └── Diagrama de Despliegue.png 
 |   |
-│   ├── Diagrama de Casos de uso.puml (Nueva ✅)
-│   ├── Diagrama de Clases.puml (Nueva ✅)
-│   ├── Diagrama de Despliegue.puml (Nueva ✅)
-│   └── Proyecto Flutter - Estructura.md (Nueva ✅)
+│   ├── Diagrama de Casos de uso.puml
+│   ├── Diagrama de Clases.puml
+│   ├── Diagrama de Despliegue.puml
+│   └── Proyecto Flutter - Estructura.md
 │
-├── ios/ (ASMM ❗❗)
+├── ios/
 │
 ├── lib/
 |   |
@@ -45,14 +45,14 @@ terapi-frontend/
 │   │   ├── nav_bar.dart
 │   │   └── setting_app_bar.dart
 |   |
-│   ├── configs/ (Nueva ✅)
+│   ├── configs/
 |   |
-│   ├── models/ (Nueva ✅)
-│   │   └── entities/ (Nueva ✅)
+│   ├── models/
+│   │   └── entities/
 |   |
 │   ├── pages/
 |   |   |
-│   │   ├── add_payment_card/ (Nueva ✅)
+│   │   ├── add_payment_card/
 │   │   |   ├── patient_add_payment_card_controller.dart
 |   |   |   └── patient_add_payment_card_page.dart
 |   |   |
@@ -64,12 +64,16 @@ terapi-frontend/
 │   │   |   ├── patient_edit_personal_info_controller.dart
 |   |   |   └── patient_edit_personal_info_page.dart
 |   |   |
-│   │   ├── help_center/ (Nueva ✅)
+│   │   ├── help_center/
 │   │   |   ├── patient_help_center_controller.dart
 |   |   |   └── patient_help_center_page.dart
 |   |   |
+│   │   ├── home_search_appointments/ (Nueva ✅)
+│   │   |   ├── home_search_appointments_controller.dart
+|   |   |   └── home_search_appointments_page.dart
+|   |   |
 │   │   ├── payment_methods/
-│   │   |   ├── patient_payment_methods_controller.dart (Cambios 🐯)
+│   │   |   ├── patient_payment_methods_controller.dart
 |   |   |   └── patient_payment_methods_page.dart
 |   |   |
 │   │   ├── terms_and_conditions/
@@ -78,8 +82,7 @@ terapi-frontend/
 |   |   |
 │   │   ├── appointment.dart
 │   │   ├── chat.dart
-│   │   ├── profile.dart
-│   │   └── search.dart
+│   │   └── profile.dart
 |   |
 │   ├── screens/
 │   │   └── settings.dart
@@ -88,19 +91,19 @@ terapi-frontend/
 |   |
 │   └── main.dart
 │
-├── linux/ (ASMM ❗❗)
+├── linux/
 │
-├── macos/ (ASMM ❗❗)
+├── macos/
 │
-├── test/ (ASMM ❗❗)
+├── test/
 │
-├── web/ (ASMM ❗❗)
+├── web/
 |
-├── windows/ (ASMM ❗❗)
+├── windows/
 |
 ├── .gitignore
 ├── .metadata
 ├── analysis_options.yaml
 ├── pubspec.lock
 ├── pubspec.yaml
-└── README.md (Cambios 🐯)
+└── README.md
