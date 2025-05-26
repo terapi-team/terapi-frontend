@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:terapi_frontend/pages/add_payment_card/patient_add_payment_card_page.dart';
+
 class PaymentMethod {
 
   final String brand;
@@ -32,9 +34,13 @@ class PatientPaymentMethodsController extends GetxController {
     Get.snackbar('Eliminado', 'Método de pago eliminado');
   }
 
-  void addNewCard() {
-    // Navegar al formulario de la tarjeta, agregarla ❗❗❗
-    Get.snackbar('Agregar tarjeta', 'Función no implementada');
-  }
+  void addNewCard() async {
 
+    final result = await Get.to(() => const PatientAddPaymentCardPage());
+
+    if (result != null && result is PaymentMethod) {
+      methods.add(result);
+      Get.snackbar('Éxito', 'Método de pago agregado');
+    }
+  }
 }

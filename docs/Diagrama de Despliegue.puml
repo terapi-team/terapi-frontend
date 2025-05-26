@@ -1,0 +1,20 @@
+@startuml DIAGRAMA DE DESPLIEGUE - VERSIÓN 01
+
+node "Replit" {
+    artifact "Quiz API TypeScript" as webApp
+    artifact "Quiz.db Postgres" as db
+}
+
+node "Teléfono Android" {
+    artifact "Therapy" as mobileApp
+}
+
+node "Open Street Server" {
+    artifact "Open Street API" as maps
+}
+
+webApp -down-> db : "Consulta y guarda datos"
+mobileApp -left-> webApp : "Consume servicios REST"
+mobileApp -left-> maps : "Consume servicios REST"
+
+@enduml

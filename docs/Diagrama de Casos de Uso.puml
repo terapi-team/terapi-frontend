@@ -1,0 +1,51 @@
+@startuml DIAGRAMA DE CASOS DE USO - VERSIÓN 01
+
+left to right direction
+
+' Actores
+actor Terapeuta
+actor Administrador
+actor Paciente
+
+' Sistema
+rectangle "Sistema de Terapia Psicológica" {
+    
+    ' Casos de uso comunes
+    (Iniciar Sesión) as i
+    (Gestionar Perfil Profesional) as gp
+    (Aceptar/Cancelar Cita) as ace
+    (Administrar Usuarios) as au
+    (Registrarse) as r
+    (Buscar Terapeuta) as bt
+    (Filtrar Terapeuta) as ft
+    (Agendar Cita) as ac
+    (Cancelar Cita) as cc
+    (Chatear con Terapeuta) as chat
+    (Enviar Reseña) as er
+    (Recibir Notificaciones) as rn
+}
+
+' Conexiones de Terapeuta
+Terapeuta --> i
+Terapeuta --> gp
+Terapeuta --> ace
+Terapeuta --> chat
+Terapeuta --> rn
+
+' Conexiones de Administrador
+Administrador --> i
+Administrador --> au
+
+' Conexiones de Paciente
+Paciente --> r
+Paciente --> i
+Paciente --> bt
+Paciente --> ft
+Paciente --> ac
+Paciente --> cc
+Paciente --> chat
+Paciente --> er
+Paciente --> rn
+
+@enduml
+

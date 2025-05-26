@@ -11,6 +11,7 @@ class PatientPaymentMethodsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final controller = Get.put(PatientPaymentMethodsController());
 
     return Scaffold(
