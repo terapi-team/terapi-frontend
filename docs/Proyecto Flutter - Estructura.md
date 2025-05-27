@@ -1,9 +1,6 @@
 ═════════════════════════════════════════════
 # PROYECTO FLUTTER - ESTRUCTURA
 ═════════════════════════════════════════════
-═════════════════════════════════════════════
-#### 🔥 GITHUB - FRONTEND - S09 - LUNES 26/05/2025 - 11:20 AM
-═════════════════════════════════════════════
 
 terapi-frontend/
 │
@@ -39,7 +36,7 @@ terapi-frontend/
 ├── lib/
 |   |
 │   ├── components/
-│   │   ├── app_navigation.dart (Actualización ✅)
+│   │   ├── app_navigation.dart
 │   │   ├── bottom_nav_bar.dart
 │   │   ├── main_app_bar.dart
 │   │   ├── nav_bar.dart
@@ -52,72 +49,77 @@ terapi-frontend/
 |   |
 │   ├── pages/
 |   |   |
-│   │   ├── add_payment_card/
-│   │   |   ├── patient_add_payment_card_controller.dart
-|   |   |   └── patient_add_payment_card_page.dart
+│   │   ├── patient/ (Nuevo ✅)
+|   |   |   |
+|   │   │   ├── add_payment_card/
+|   │   │   |   ├── add_payment_card_controller.dart
+|   |   |   |   └── add_payment_card_page.dart
+|   |   |   |
+|   │   │   ├── appointment_details/
+|   │   │   |   ├── appointment_details_controller.dart
+|   |   |   |   └── appointment_details_page.dart
+|   |   |   |
+|   │   │   ├── appointment_schedules_selection/
+|   │   │   |   ├── appointment_schedules_selection_controller.dart
+|   |   |   |   └── appointment_schedules_selection_page.dart
+|   |   |   |
+|   │   │   ├── appointments/
+|   │   │   |   ├── appointments_controller.dart
+|   |   |   |   └── appointments_page.dart
+|   |   |   |
+|   │   │   ├── change_password/
+|   │   │   |   ├── change_password_controller.dart
+|   |   |   |   └── change_password_page.dart
+|   |   |   |
+|   │   │   ├── edit_personal_info/
+|   │   │   |   ├── edit_personal_info_controller.dart
+|   |   |   |   └── edit_personal_info_page.dart
+|   |   |   |
+|   │   │   ├── help_center/
+│   |   │   |   ├── help_center_controller.dart
+|   |   |   |   └── help_center_page.dart
+|   |   |   |
+|   │   │   ├── home_search_appointments/
+│   │   |   |   ├── home_search_appointments_controller.dart
+|   |   |   |   └── home_search_appointments_page.dart
+|   |   |   |
+|   │   │   ├── payment_methods/
+│   │   |   |   ├── payment_methods_controller.dart
+|   |   |   |   └── payment_methods_page.dart
+|   |   |   |
+|   │   │   ├── schedule_appointment/
+│   |   │   |   ├── schedule_appointment_controller.dart
+|   |   |   |   └── schedule_appointment_page.dart
+|   |   |   |
+|   │   │   ├── search_appointment_filters/
+|   │   │   |   ├── search_appointment_filters_controller.dart
+|   |   |   |   └── search_appointment_filters_page.dart
+|   |   |   |
+|   │   │   ├── search_appointment_therapist/
+│   │   |   |   ├── search_appointment_therapist_controller.dart
+|   |   |   |   └── search_appointment_therapist_page.dart
+|   |   |   |
+|   │   │   ├── terms_and_conditions/
+│   |   │   |   ├── terms_and_conditions_controller.dart
+|   |   |   |   └── terms_and_conditions_page.dart
+|   |   |   |
+|   │   │   ├── therapist_profile_opinions/
+│   │   |   |   ├── therapist_profile_opinions_controller.dart
+|   |   |   |   └── therapist_profile_opinions_page.dart
+|   |   |   |
+|   │   │   ├── chat.dart
+│   │   |   └── profile.dart
 |   |   |
-│   │   ├── appointment_details/ (Nueva ✅)
-│   │   |   ├── appointment_details_controller.dart
-|   |   |   └── appointment_details_page.dart
+|   │   ├── therapist/ (Nuevo ✅)
 |   |   |
-│   │   ├── appointment_schedules_selection/
-│   │   |   ├── appointment_schedules_selection_controller.dart
-|   |   |   └── appointment_schedules_selection_page.dart (Actualización ✅)
-|   |   |
-│   │   ├── appointments/ (Nueva ✅)
-│   │   |   ├── appointments_controller.dart
-|   |   |   └── appointments_page.dart
-|   |   |
-│   │   ├── change_password/
-│   │   |   ├── patient_change_password_controller.dart
-|   |   |   └── patient_change_password_page.dart
-|   |   |
-│   │   ├── edit_personal_info/
-│   │   |   ├── patient_edit_personal_info_controller.dart
-|   |   |   └── patient_edit_personal_info_page.dart
-|   |   |
-│   │   ├── help_center/
-│   │   |   ├── patient_help_center_controller.dart
-|   |   |   └── patient_help_center_page.dart
-|   |   |
-│   │   ├── home_search_appointments/
-│   │   |   ├── home_search_appointments_controller.dart
-|   |   |   └── home_search_appointments_page.dart
-|   |   |
-│   │   ├── payment_methods/
-│   │   |   ├── patient_payment_methods_controller.dart
-|   |   |   └── patient_payment_methods_page.dart (Actualización ✅)
-|   |   |
-│   │   ├── schedule_appointment/
-│   │   |   ├── patient_schedule_appointment_controller.dart
-|   |   |   └── patient_schedule_appointment_page.dart
-|   |   |
-│   │   ├── search_appointment_filters/
-│   │   |   ├── search_appointment_filters_controller.dart
-|   |   |   └── search_appointment_filters_page.dart
-|   |   |
-│   │   ├── search_appointment_therapist/
-│   │   |   ├── search_appointment_therapist_controller.dart
-|   |   |   └── search_appointment_therapist_page.dart
-|   |   |
-│   │   ├── terms_and_conditions/
-│   │   |   ├── patient_terms_and_conditions_controller.dart
-|   |   |   └── patient_terms_and_conditions_page.dart
-|   |   |
-│   │   ├── therapist_profile_opinions/
-│   │   |   ├── therapist_profile_opinions_controller.dart
-|   |   |   └── therapist_profile_opinions_page.dart
-|   |   |
-│   │   ├── appointment.dart
-│   │   ├── chat.dart
-│   │   └── profile.dart
+│   │   └── admin/ (Nuevo ✅)
 |   |
 │   ├── screens/
 │   │   └── settings.dart
 |   |
 │   ├── services/
 |   |
-│   └── main.dart (Actualización ✅)
+│   └── main.dart
 │
 ├── linux/
 │

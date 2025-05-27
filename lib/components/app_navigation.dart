@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'bottom_nav_bar.dart';
 import 'main_app_bar.dart';
 
-import '../pages/home_search_appointments/home_search_appointments_page.dart';
-import '../pages/appointments/appointments_page.dart';
-import '../pages/chat.dart';
-import '../pages/profile.dart';
+import '../pages/patient/home_search_appointments/home_search_appointments_page.dart';
+import '../pages/patient/appointments/appointments_page.dart';
+import '../pages/patient/chat.dart';
+import '../pages/patient/profile.dart';
 
 class AppNavigation extends StatefulWidget {
 
@@ -25,10 +25,10 @@ class _AppNavigationState extends State<AppNavigation> {
 
   // Lista de pantallas para la navegación principal
   final List<Widget> _mainPages = [
-    const HomeSearchAppointmentsPage(),
-    const AppointmentsPage(),
-    const ChatsPage(),
-    const ProfilePage(),
+    const PatientHomeSearchAppointmentsPage(),
+    const PatientAppointmentsPage(),
+    const PatientChatsPage(),
+    const PatientProfilePage(),
   ];
 
   @override

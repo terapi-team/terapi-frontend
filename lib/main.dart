@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'components/app_navigation.dart';
-import 'pages/appointments/appointments_controller.dart';
+import 'pages/patient/appointments/appointments_controller.dart';
 
 void main() {
 
   // Inyecta globalmente el controlador de citas para que esté disponible en toda la app
-  Get.put(AppointmentsController());
+  Get.put(PatientAppointmentsController());
 
   runApp(const MyApp());
 
