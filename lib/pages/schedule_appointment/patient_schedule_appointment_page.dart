@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:terapi_frontend/components/setting_app_bar.dart';
 
-import 'schedule_appointment_controller.dart';
+import 'patient_schedule_appointment_controller.dart';
 
 class ScheduleAppointmentPage extends StatelessWidget {
 

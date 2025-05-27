@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:terapi_frontend/pages/schedule_appointment/schedule_appointment_page.dart';
+import 'package:terapi_frontend/pages/schedule_appointment/patient_schedule_appointment_page.dart';
+import 'package:terapi_frontend/pages/search_appointment_filters/patient_search_appointment_filters_page.dart';
 
 import 'home_search_appointments_controller.dart';
 
@@ -33,7 +34,9 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
             title: const Text("Agregar Filtros"),
             subtitle: const Text("Especialidad, idioma, precio..."),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () {},
+            onTap: () {
+              Get.to(() => const PatientSearchAppointmentFiltersPage());
+            },
           ),
 
           Padding(

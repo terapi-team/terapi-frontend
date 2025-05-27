@@ -76,9 +76,13 @@ terapi-frontend/
 │   │   |   ├── patient_payment_methods_controller.dart
 |   |   |   └── patient_payment_methods_page.dart
 |   |   |
-│   │   ├── schedule_appointment/ (Nueva ✅)
-│   │   |   ├── schedule_appointment_controller.dart
-|   |   |   └── schedule_appointment_page.dart
+│   │   ├── schedule_appointment/
+│   │   |   ├── patient_schedule_appointment_controller.dart (Cambio de nombre ❗)
+|   |   |   └── patient_schedule_appointment_page.dart (Cambio de nombre ❗)
+|   |   |
+│   │   ├── search_appointment_filters/ (Nueva ✅)
+│   │   |   ├── search_appointment_filters_controller.dart
+|   |   |   └── search_appointment_filters_page.dart
 |   |   |
 │   │   ├── terms_and_conditions/
 │   │   |   ├── patient_terms_and_conditions_controller.dart
