@@ -39,7 +39,7 @@ terapi-frontend/
 ├── lib/
 |   |
 │   ├── components/
-│   │   ├── app_navigation.dart
+│   │   ├── app_navigation.dart (Actualización ✅)
 │   │   ├── bottom_nav_bar.dart
 │   │   ├── main_app_bar.dart
 │   │   ├── nav_bar.dart
@@ -56,9 +56,17 @@ terapi-frontend/
 │   │   |   ├── patient_add_payment_card_controller.dart
 |   |   |   └── patient_add_payment_card_page.dart
 |   |   |
-│   │   ├── appointment_schedules_selection/ (Nueva ✅)
+│   │   ├── appointment_details/ (Nueva ✅)
+│   │   |   ├── appointment_details_controller.dart
+|   |   |   └── appointment_details_page.dart
+|   |   |
+│   │   ├── appointment_schedules_selection/
 │   │   |   ├── appointment_schedules_selection_controller.dart
-|   |   |   └── appointment_schedules_selection_page.dart
+|   |   |   └── appointment_schedules_selection_page.dart (Actualización ✅)
+|   |   |
+│   │   ├── appointments/ (Nueva ✅)
+│   │   |   ├── appointments_controller.dart
+|   |   |   └── appointments_page.dart
 |   |   |
 │   │   ├── change_password/
 │   │   |   ├── patient_change_password_controller.dart
@@ -74,11 +82,11 @@ terapi-frontend/
 |   |   |
 │   │   ├── home_search_appointments/
 │   │   |   ├── home_search_appointments_controller.dart
-|   |   |   └── home_search_appointments_page.dart (Actualización ✅)
+|   |   |   └── home_search_appointments_page.dart
 |   |   |
 │   │   ├── payment_methods/
 │   │   |   ├── patient_payment_methods_controller.dart
-|   |   |   └── patient_payment_methods_page.dart
+|   |   |   └── patient_payment_methods_page.dart (Actualización ✅)
 |   |   |
 │   │   ├── schedule_appointment/
 │   │   |   ├── patient_schedule_appointment_controller.dart
@@ -90,13 +98,13 @@ terapi-frontend/
 |   |   |
 │   │   ├── search_appointment_therapist/
 │   │   |   ├── search_appointment_therapist_controller.dart
-|   |   |   └── search_appointment_therapist_page.dart (Actualización ✅)
+|   |   |   └── search_appointment_therapist_page.dart
 |   |   |
 │   │   ├── terms_and_conditions/
 │   │   |   ├── patient_terms_and_conditions_controller.dart
 |   |   |   └── patient_terms_and_conditions_page.dart
 |   |   |
-│   │   ├── therapist_profile_opinions/ (Nueva ✅)
+│   │   ├── therapist_profile_opinions/
 │   │   |   ├── therapist_profile_opinions_controller.dart
 |   |   |   └── therapist_profile_opinions_page.dart
 |   |   |
@@ -109,7 +117,7 @@ terapi-frontend/
 |   |
 │   ├── services/
 |   |
-│   └── main.dart
+│   └── main.dart (Actualización ✅)
 │
 ├── linux/
 │

@@ -3,14 +3,18 @@ import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+import 'package:terapi_frontend/pages/add_payment_card/patient_add_payment_card_page.dart';
+
 import 'patient_payment_methods_controller.dart';
 
 class PatientPaymentMethodsPage extends StatelessWidget {
+ 
+  final bool seleccionDesdeCita;
 
-  const PatientPaymentMethodsPage({super.key});
+  const PatientPaymentMethodsPage({super.key, this.seleccionDesdeCita = false});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  // Identificar si viene desde `appointment details` (Al tocar una Card ddebe poder seleccionar una tarjeta para pagar) o `profile` (Al tocar una Card debe mostrar su información para editarla)
 
     final controller = Get.put(PatientPaymentMethodsController());
 
@@ -26,9 +30,25 @@ class PatientPaymentMethodsPage extends StatelessWidget {
               ...controller.methods.asMap().entries.map((entry) {
                 final index = entry.key;
                 final method = entry.value;
+
                 return Card(
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
+
+                    onTap: () {
+                      if (seleccionDesdeCita) {
+                        // Si la pantalla se usó desde appointment_details_page.dart
+                        Get.back(result: method); // Retorna la tarjeta seleccionada
+                      } else {
+                        // Comportamiento por defecto desde perfil
+                        Get.snackbar(
+                          "Información",
+                          "Para cambiar la tarjeta, primero debes eliminarla y registrar una nueva.",
+                          snackPosition: SnackPosition.BOTTOM,
+                        );
+                      }
+                    },
+
                     leading: CircleAvatar(
                       backgroundColor: const Color(0xFFFFF3E0),
                       child: SvgPicture.asset(
@@ -39,6 +59,7 @@ class PatientPaymentMethodsPage extends StatelessWidget {
                             Color(0xFFFFA726), BlendMode.srcIn),
                       ),
                     ),
+
                     title: Text('${method.brand} terminada en ${method.last4}'),
                     subtitle: Text('Expira: ${method.expiration}'),
                     trailing: TextButton(
@@ -48,9 +69,10 @@ class PatientPaymentMethodsPage extends StatelessWidget {
                         style: TextStyle(color: Colors.red),
                       ),
                     ),
-                  ),
-                );
-              }),
+
+                  ), // child: ListTile(
+                ); // return Card(
+              }), // ...controller.methods.asMap().entries.map((entry) {
 
               GestureDetector(
                 onTap: controller.addNewCard,

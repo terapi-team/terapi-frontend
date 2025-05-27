@@ -36,7 +36,7 @@ class PatientPaymentMethodsController extends GetxController {
 
   void addNewCard() async {
 
-    final result = await Get.to(() => const PatientAddPaymentCardPage());
+    final result = await Get.to(() => const PatientAddPaymentCardPage()); // Direcciona a la pantalla para agregar la tarjeta
 
     if (result != null && result is PaymentMethod) {
       methods.add(result);

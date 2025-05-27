@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:terapi_frontend/components/setting_app_bar.dart';
-import 'package:terapi_frontend/pages/payment_methods/patient_payment_methods_page.dart';
+import 'package:terapi_frontend/pages/appointment_details/appointment_details_page.dart';
 
 import 'appointment_schedules_selection_controller.dart';
 
@@ -121,7 +121,7 @@ class AppointmentSchedulesSelectionPage extends StatelessWidget {
 
             Obx(() => ElevatedButton(
               onPressed: controller.horarioSeleccionado.value.isEmpty ? null : () {
-                Get.to(() => const PatientPaymentMethodsPage()); // Para futura update: Direccionar con data para que cargue la data respectiva
+                Get.to(() => const AppointmentDetailsPage()); // Para futura update: Direccionar con data para que cargue la data respectiva ❗❗❗
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,

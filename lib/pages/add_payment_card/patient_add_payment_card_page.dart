@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 
 import 'package:terapi_frontend/components/setting_app_bar.dart';
 import 'patient_add_payment_card_controller.dart';
-import '../payment_methods/patient_payment_methods_controller.dart';  // necesario para PaymentMethod
+
+import '../payment_methods/patient_payment_methods_controller.dart';
 
 class PatientAddPaymentCardPage extends StatelessWidget {
+
   const PatientAddPaymentCardPage({super.key});
 
   @override
