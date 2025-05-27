@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:terapi_frontend/pages/schedule_appointment/patient_schedule_appointment_page.dart';
 import 'package:terapi_frontend/pages/search_appointment_filters/patient_search_appointment_filters_page.dart';
 import 'package:terapi_frontend/pages/search_appointment_therapist/search_appointment_therapist_page.dart';
+import 'package:terapi_frontend/pages/therapist_profile_opinions/therapist_profile_opinions_page.dart';
+import 'package:terapi_frontend/pages/appointment_schedules_selection/appointment_schedules_selection_page.dart';
 
 import 'home_search_appointments_controller.dart';
 
@@ -21,14 +23,6 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
         children: [
 
           const SizedBox(height: 10),
-
-          ListTile(
-            leading: const Icon(Icons.calendar_today, color: Colors.orange),
-            title: const Text("Elegir Fecha"),
-            subtitle: const Text("Selecciona el día para tu cita"),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {},
-          ),
 
           ListTile(
             leading: const Icon(Icons.filter_alt_outlined, color: Colors.green),
@@ -70,7 +64,7 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        // Fila superior: avatar, nombre y botón de opiniones
+                        // || FILA SUPERIOR: AVATAR, NOMBRE Y BOTÓN DE OPINIONES ||
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -93,9 +87,16 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
                             ),
 
                             TextButton(
-                              onPressed: () {},
-                              child: Text("Ver opiniones (15)", style: TextStyle(color: Colors.orange)),
-                            )
+
+                              onPressed: () {
+                                Get.to(() => const TherapistProfileOpinionsPage());
+                              },
+
+                              child: const Text(
+                                "Ver opiniones (15)",
+                                style: TextStyle(color: Colors.orange),
+                              ),
+                            ),
 
                           ],
                         ),
@@ -132,10 +133,13 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
+
                             OutlinedButton(onPressed: () {
                               Get.to(() => const SearchAppointmentTherapistPage()); // Para futura update: Get.to(() => SearchAppointmentTherapistPage(terapeuta: t));
                             }, child: Text("Ver perfil")),
+
                             const SizedBox(width: 8),
+
                             ElevatedButton(
                               onPressed: () {
                                 Get.to(() => const ScheduleAppointmentPage()); // Para futura update: Get.to(() => ScheduleAppointmentPage(terapeuta: t));
@@ -146,6 +150,7 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
                               ),
                               child: Text("Agendar cita"),
                             ),
+
                           ],
                         ) // Row
 

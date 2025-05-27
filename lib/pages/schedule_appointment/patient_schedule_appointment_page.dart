@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+import 'package:terapi_frontend/pages/appointment_schedules_selection/appointment_schedules_selection_page.dart';
 
 import 'patient_schedule_appointment_controller.dart';
 
@@ -48,7 +49,7 @@ class ScheduleAppointmentPage extends StatelessWidget {
                       ],
                     ),
                     onTap: () {
-                      // Acción al seleccionar servicio
+                      Get.to(() => const AppointmentSchedulesSelectionPage()); // Para futura update: Pasar data que permita obtener data respectiva
                     },
                   ),
                 );

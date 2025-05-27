@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+import 'package:terapi_frontend/pages/therapist_profile_opinions/therapist_profile_opinions_page.dart';
+import 'package:terapi_frontend/pages/schedule_appointment/patient_schedule_appointment_page.dart';
 
 import 'search_appointment_therapist_controller.dart';
 
@@ -52,11 +54,9 @@ class SearchAppointmentTherapistPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  // INFORMACIÓN PRINCIPAL
+                  // || INFORMACIÓN PRINCIPAL ||
                   Row(
-
                     crossAxisAlignment: CrossAxisAlignment.start,
-
                     children: [
 
                       CircleAvatar(
@@ -76,13 +76,25 @@ class SearchAppointmentTherapistPage extends StatelessWidget {
                             Text(t.nombre, style: Theme.of(context).textTheme.titleMedium),
                             Text(t.enfoque),
 
-                            Row(
-                              children: [
-                                Icon(Icons.star, color: Colors.amber, size: 20),
-                                Text("${t.rating}", style: const TextStyle(fontWeight: FontWeight.bold)),
-                              ],
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => const TherapistProfileOpinionsPage());
+                              },
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.star, color: Colors.amber, size: 20),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    "${t.rating}",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.orange,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-
                           ],
                         ),
                       ),
@@ -101,7 +113,7 @@ class SearchAppointmentTherapistPage extends StatelessWidget {
 
                   const SizedBox(height: 12),
 
-                  // ETIQUETAS DE INFO GENERAL
+                  // || ETIQUETAS DE INFO GENERAL ||
                   Wrap(
                     spacing: 8,
                     children: [
@@ -113,13 +125,15 @@ class SearchAppointmentTherapistPage extends StatelessWidget {
 
                   const SizedBox(height: 16),
 
-                  // BOTONES
+                  // || BOTONES ||
                   Row(
                     children: [
 
                       Expanded(
                         child: ElevatedButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const ScheduleAppointmentPage()); // Para futura update: pasar terapeuta, para que se visualice la data respectiva
+                          },
                           icon: const Icon(Icons.calendar_today),
                           label: const Text("Agendar cita"),
                           style: ElevatedButton.styleFrom(
@@ -128,6 +142,7 @@ class SearchAppointmentTherapistPage extends StatelessWidget {
                           ),
                         ),
                       ),
+
 
                       const SizedBox(width: 8),
 

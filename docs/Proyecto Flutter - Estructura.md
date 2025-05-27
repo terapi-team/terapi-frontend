@@ -56,6 +56,10 @@ terapi-frontend/
 │   │   |   ├── patient_add_payment_card_controller.dart
 |   |   |   └── patient_add_payment_card_page.dart
 |   |   |
+│   │   ├── appointment_schedules_selection/ (Nueva ✅)
+│   │   |   ├── appointment_schedules_selection_controller.dart
+|   |   |   └── appointment_schedules_selection_page.dart
+|   |   |
 │   │   ├── change_password/
 │   │   |   ├── patient_change_password_controller.dart
 |   |   |   └── patient_change_password_page.dart
@@ -84,13 +88,17 @@ terapi-frontend/
 │   │   |   ├── search_appointment_filters_controller.dart
 |   |   |   └── search_appointment_filters_page.dart
 |   |   |
-│   │   ├── search_appointment_therapist/ (Nueva ✅)
+│   │   ├── search_appointment_therapist/
 │   │   |   ├── search_appointment_therapist_controller.dart
-|   |   |   └── search_appointment_therapist_page.dart
+|   |   |   └── search_appointment_therapist_page.dart (Actualización ✅)
 |   |   |
 │   │   ├── terms_and_conditions/
 │   │   |   ├── patient_terms_and_conditions_controller.dart
 |   |   |   └── patient_terms_and_conditions_page.dart
+|   |   |
+│   │   ├── therapist_profile_opinions/ (Nueva ✅)
+│   │   |   ├── therapist_profile_opinions_controller.dart
+|   |   |   └── therapist_profile_opinions_page.dart
 |   |   |
 │   │   ├── appointment.dart
 │   │   ├── chat.dart
