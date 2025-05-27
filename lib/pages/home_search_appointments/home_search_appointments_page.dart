@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:terapi_frontend/pages/schedule_appointment/patient_schedule_appointment_page.dart';
 import 'package:terapi_frontend/pages/search_appointment_filters/patient_search_appointment_filters_page.dart';
+import 'package:terapi_frontend/pages/search_appointment_therapist/search_appointment_therapist_page.dart';
 
 import 'home_search_appointments_controller.dart';
 
@@ -127,11 +128,13 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
 
                         const SizedBox(height: 12),
 
-                        // Botones: Ver perfil y Agendar cita
+                        // BOTONES: VER PERFIL Y AGENDAR CITA
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            OutlinedButton(onPressed: () {}, child: Text("Ver perfil")),
+                            OutlinedButton(onPressed: () {
+                              Get.to(() => const SearchAppointmentTherapistPage()); // Para futura update: Get.to(() => SearchAppointmentTherapistPage(terapeuta: t));
+                            }, child: Text("Ver perfil")),
                             const SizedBox(width: 8),
                             ElevatedButton(
                               onPressed: () {
