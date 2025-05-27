@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:terapi_frontend/pages/schedule_appointment/schedule_appointment_page.dart';
+
 import 'home_search_appointments_controller.dart';
 
 class HomeSearchAppointmentsPage extends StatelessWidget {
@@ -129,7 +131,9 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
                             OutlinedButton(onPressed: () {}, child: Text("Ver perfil")),
                             const SizedBox(width: 8),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(() => const ScheduleAppointmentPage()); // Para futura update: Get.to(() => ScheduleAppointmentPage(terapeuta: t));
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.orange,
                                 foregroundColor: Colors.white,
@@ -138,6 +142,7 @@ class HomeSearchAppointmentsPage extends StatelessWidget {
                             ),
                           ],
                         ) // Row
+
                       ], // children
                     ),  // child: Column
                   ),  // child: Padding
