@@ -83,11 +83,11 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
                   Row(children: [
                     const Icon(Icons.credit_card, color: Colors.orange),
                     const SizedBox(width: 8),
-                    Obx(() => Text(controller.tarjeta.value)),
+                    Obx(() => Text(controller.tarjeta.value)), // OBSERVACIÓN: Cambio de `controller.tarjeta.value`
                   ]),
                   TextButton(
                     onPressed: () async {
-                      final metodo = await Get.to(() => const PatientPaymentMethodsPage(seleccionDesdeCita: true));
+                      final metodo = await Get.to(() => const PatientPaymentMethodsPage(seleccionDesdeCita: true)); // NAVEGACIÓN: PatientPaymentMethodsPage
                       if (metodo != null) {
                         controller.actualizarTarjeta(metodo);
                       }

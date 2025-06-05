@@ -1,34 +1,49 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// CLASE
 class PatientAddPaymentCardController extends GetxController {
 
-  final cardNumberCtrl = TextEditingController();
-  final cardHolderCtrl = TextEditingController();
-  final expiryDateCtrl = TextEditingController();
-  final cvvCtrl = TextEditingController();
-  final documentType = 'DNI'.obs;
-  final documentNumberCtrl = TextEditingController();
+  // ATRIBUTOS: Controladores de texto para los campos del formulario
+  final cardNumberCtrl = TextEditingController();     // ATRIBUTO: Número de tarjeta
+  final cardHolderCtrl = TextEditingController();     // ATRIBUTO: Nombre del titular
+  final expiryDateCtrl = TextEditingController();     // ATRIBUTO: Fecha de expiración (MM/YY)
+  final cvvCtrl = TextEditingController();            // ATRIBUTO: Código CVV
+  final documentNumberCtrl = TextEditingController(); // ATRIBUTO: Número de documento
 
+  // ATRIBUTO: Tipo de documento seleccionado (observable)
+  final documentType = 'DNI'.obs;
+
+  // ATRIBUTO: Estado de carga (observable)
   final isLoading = false.obs;
 
+  // ATRIBUTO: Lista de tipos de documentos disponibles
   final List<String> documentTypes = ['DNI', 'Carnet de Extranjería', 'Pasaporte'];
 
+  // MÉTODO: Enviar formulario de tarjeta
   void submitCard() {
 
     if (!isValid()) return;
 
     isLoading.value = true;
 
+    // Simulación de procesamiento de backend
     Future.delayed(const Duration(seconds: 2), () {
+
       isLoading.value = false;
+
+      // NAVEGACIÓN: Regresa a la vista anterior
       Get.back();
+
+      // SNACKBAR: Confirmación de éxito
       Get.snackbar('Éxito', 'Tarjeta agregada correctamente',
           snackPosition: SnackPosition.BOTTOM);
     });
 
-  } // submitCard
+  } // void submitCard() {
 
+  // MÉTODO: Validar campos del formulario
   bool isValid() {
 
     if (cardNumberCtrl.text.length < 16) {
@@ -58,8 +73,9 @@ class PatientAddPaymentCardController extends GetxController {
 
     return true;
 
-  } // isValid
+  } // bool isValid() {
 
+  // MÉTODO: onClose (dispose de controladores)
   @override
   void onClose() {
 
@@ -72,4 +88,4 @@ class PatientAddPaymentCardController extends GetxController {
 
   }
 
-}
+} // class PatientAddPaymentCardController extends GetxController {

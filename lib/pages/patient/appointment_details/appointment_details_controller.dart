@@ -16,16 +16,16 @@ class PatientAppointmentDetailsController extends GetxController {
   final modalidad = "Consulta virtual";
   final total = "S/ 140.00 PEN";
 
-  var tarjeta = "Visa terminada en 4242".obs;
+  var tarjeta = "Visa terminada en 4242".obs; // VALOR: "${metodo.brand} terminada en ${metodo.last4}"
 
   void confirmarPago() {
 
-    // Simula confirmación en la terminal
     print("Pago confirmado");
 
-    // Cierra cualquier snackbar previo antes de mostrar uno nuevo
+    // CONDICIONAL: Cierra un posible snackbar abierto
     if (Get.isSnackbarOpen) Get.closeCurrentSnackbar();
 
+    // ÍCONO: SVG - CIRCLE CHECK
     final successIcon = SvgPicture.asset(
       'assets/icons/circle-check.svg',
       width: 24,
@@ -33,7 +33,7 @@ class PatientAppointmentDetailsController extends GetxController {
       colorFilter: const ColorFilter.mode(Color(0xFF2E7D32), BlendMode.srcIn),
     );
 
-    // Crea la nueva cita
+    // VARIABLE: Tipo - Clase `Appointment`
     final nuevaCita = Appointment(
       nombre: terapeutaNombre,
       especialidad: especialidad,
@@ -43,11 +43,11 @@ class PatientAppointmentDetailsController extends GetxController {
       imagen: 'assets/images/therapists/maria.jpg',
     );
 
-    // Agrega la cita al controlador de citas
+    // VARIABLE: Tipo - Clase `PatientAppointmentsController`
     final citasController = Get.find<PatientAppointmentsController>();
     citasController.agregarCita(nuevaCita);
 
-    // Muestra snackbar de confirmación
+    // SNACKBAR: Mensaje de confirmación
     Get.snackbar(
       "¡Listo!",
       "Tu cita ha sido agendada exitosamente.",
@@ -59,9 +59,9 @@ class PatientAppointmentDetailsController extends GetxController {
       icon: successIcon,
     );
 
-    // Después de mostrar el snackbar
+    // DELAY: 2 segundos
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAll(() => const AppNavigation(initialIndex: 1));
+      Get.offAll(() => const AppNavigation(initialIndex: 1)); // NAVEGACIÓN: `PatientAppointmentsPage`
     });
 
   } // void confirmarPago() {
@@ -71,11 +71,14 @@ class PatientAppointmentDetailsController extends GetxController {
   }
 
   void actualizarTarjeta(dynamic metodo) {
-    // Asegúrate que `metodo` tiene las propiedades esperadas
+
+    // CONDICIONAL: Si cumple lo necesario
     if (metodo != null && metodo.brand != null && metodo.last4 != null) {
+
       tarjeta.value = "${metodo.brand} terminada en ${metodo.last4}";
       print("Tarjeta actualizada a: ${tarjeta.value}");
+
     }
-  }
+  } // void actualizarTarjeta(dynamic metodo) {
 
 } // class AppointmentDetailsController

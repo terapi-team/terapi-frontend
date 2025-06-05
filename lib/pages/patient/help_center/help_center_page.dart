@@ -1,27 +1,39 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// IMPORTACIÓN: Componentes personalizados
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+
+// IMPORTACIÓN: Controlador
 import 'help_center_controller.dart';
 
+// CLASE
 class PatientHelpCenterPage extends StatelessWidget {
 
+  // CONSTRUCTOR
   const PatientHelpCenterPage({super.key});
 
+  // MÉTODO: Build
   @override
   Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientHelpCenterController());
 
     return Scaffold(
 
+      // APPBAR
       appBar: const SettingsAppBar(title: 'Centro de ayuda'),
 
+      // BODY: Lista reactiva de preguntas por categoría
       body: Obx(() => ListView(
 
             padding: const EdgeInsets.all(16),
 
             children: [
+
+              // TÍTULO PRINCIPAL
               const Text(
                 'Preguntas frecuentes',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -29,9 +41,10 @@ class PatientHelpCenterPage extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // Agrupación por categoría
+              // AGRUPACIÓN: Preguntas por categoría
               ...controller.categories.map((category) {
 
+                // FILTRO: Preguntas que pertenecen a la categoría actual
                 final items = controller.questions
                     .where((q) => q.category == category)
                     .toList();
@@ -42,6 +55,7 @@ class PatientHelpCenterPage extends StatelessWidget {
 
                   children: [
 
+                    // ENCABEZADO DE CATEGORÍA
                     Container(
                       color: const Color(0xFFF1F2F5),
                       padding:
@@ -54,6 +68,7 @@ class PatientHelpCenterPage extends StatelessWidget {
                       ),
                     ),
 
+                    // LISTADO: Preguntas de la categoría
                     ...items.map((q) => ListTile(
                           title: Text(q.title),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
@@ -68,6 +83,7 @@ class PatientHelpCenterPage extends StatelessWidget {
                 );
               }),
 
+              // SECCIÓN: Mensaje si no encontró lo que buscaba
               Container(
 
                 padding: const EdgeInsets.all(16),
@@ -81,10 +97,10 @@ class PatientHelpCenterPage extends StatelessWidget {
                         color: Colors.orange.shade900),
                   ),
                 ),
-              ),  // Container
+              ),  // Container(
 
-            ],  // children
-          )), // body
-    );  // Scaffold
-  } // Widget
-} // class
+            ],  // children: [
+          )), // body: Obx(() => ListView(
+    );  // return Scaffold(
+  } // Widget build(BuildContext context) {
+} // class PatientHelpCenterPage extends StatelessWidget {

@@ -1,25 +1,35 @@
-
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// IMPORTACIÓN: Componentes personalizados
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+
+// IMPORTACIÓN: Página de detalles de cita
 import 'package:terapi_frontend/pages/patient/appointment_details/appointment_details_page.dart';
 
+// IMPORTACIÓN: Controlador
 import 'appointment_schedules_selection_controller.dart';
 
+// CLASE
 class PatientAppointmentSchedulesSelectionPage extends StatelessWidget {
 
+  // CONSTRUCTOR
   const PatientAppointmentSchedulesSelectionPage({Key? key}) : super(key: key);
 
+  // MÉTODO: Build
   @override
   Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientAppointmentSchedulesSelectionController());
 
     return Scaffold(
 
+      // APPBAR
       appBar: SettingsAppBar(title: "Selecciona una hora"),
 
+      // BODY: Contenido principal con padding
       body: Padding(
 
         padding: const EdgeInsets.all(16),
@@ -27,6 +37,7 @@ class PatientAppointmentSchedulesSelectionPage extends StatelessWidget {
 
           children: [
 
+            // SECCIÓN: Selector de fechas (reactivo)
             Obx(() => Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(controller.fechas.length, (index) {
@@ -55,6 +66,7 @@ class PatientAppointmentSchedulesSelectionPage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
+            // SECCIÓN: Cuadrícula de horarios disponibles
             Expanded(
               child: Obx(() => GridView.count(
                 crossAxisCount: 3,
@@ -93,6 +105,7 @@ class PatientAppointmentSchedulesSelectionPage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
+            // BLOQUE: Duración y precio del servicio
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
@@ -119,9 +132,13 @@ class PatientAppointmentSchedulesSelectionPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
+            // BOTÓN: Confirmar horario seleccionado
             Obx(() => ElevatedButton(
-              onPressed: controller.horarioSeleccionado.value.isEmpty ? null : () {
-                Get.to(() => const PatientAppointmentDetailsPage()); // Para futura update: Direccionar con data para que cargue la data respectiva ❗❗❗
+              onPressed: controller.horarioSeleccionado.value.isEmpty
+                ? null
+                : () {
+                  // NAVEGACIÓN: Ir a pantalla de detalles de cita
+                  Get.to(() => const PatientAppointmentDetailsPage());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,

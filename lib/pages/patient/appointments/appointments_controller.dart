@@ -1,14 +1,18 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:get/get.dart';
 
+// CLASE: Modelo de cita
 class Appointment {
 
-  final String nombre;
-  final String especialidad;
-  final String fecha;
-  final String hora;
-  final String modalidad;
-  final String imagen;
+  // ATRIBUTOS
+  final String nombre;       // ATRIBUTO: Nombre del terapeuta
+  final String especialidad; // ATRIBUTO: Especialidad del terapeuta
+  final String fecha;        // ATRIBUTO: Fecha de la cita
+  final String hora;         // ATRIBUTO: Hora de la cita
+  final String modalidad;    // ATRIBUTO: Modalidad: Virtual o Presencial
+  final String imagen;       // ATRIBUTO: Ruta de imagen del terapeuta
 
+  // CONSTRUCTOR
   Appointment({
     required this.nombre,
     required this.especialidad,
@@ -20,19 +24,26 @@ class Appointment {
 
 } // class Appointment {
 
+// CLASE: Controlador para gestionar citas del paciente
 class PatientAppointmentsController extends GetxController {
 
+  // ATRIBUTO: Lista de próximas citas (Observable)
   var proximas = <Appointment>[].obs;
+
+  // ATRIBUTO: Lista de citas pasadas o historial (Observable)
   var historial = <Appointment>[].obs;
 
+  // MÉTODO: onInit — Se ejecuta al inicializar el controlador
   @override
   void onInit() {
     super.onInit();
     cargarCitas();
   }
 
+  // MÉTODO: Cargar citas simuladas (proximas e historial)
   void cargarCitas() {
 
+    // SIMULACIÓN: Próximas citas
     proximas.value = [
 
       Appointment(
@@ -55,12 +66,14 @@ class PatientAppointmentsController extends GetxController {
 
     ]; // proximas.value = [
 
-    historial.value = []; // Simulación
+    // SIMULACIÓN: Historial
+    historial.value = [];
 
   } // void cargarCitas() {
 
+  // MÉTODO: Agregar una nueva cita a la lista de próximas
   void agregarCita(Appointment nuevaCita) {
     proximas.insert(0, nuevaCita);
   }
 
-} // class AppointmentsController extends GetxController {
+} // class PatientAppointmentsController extends GetxController {

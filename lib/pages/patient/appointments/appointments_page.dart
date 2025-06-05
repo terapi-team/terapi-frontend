@@ -1,22 +1,31 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+// IMPORTACIÓN: Controlador
 import 'appointments_controller.dart';
 
+// CLASE
 class PatientAppointmentsPage extends StatelessWidget {
 
+  // CONSTRUCTOR
   const PatientAppointmentsPage({super.key});
 
+  // MÉTODO: Build
   @override
   Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientAppointmentsController());
 
     return Scaffold(
 
+      // APPBAR
       appBar: AppBar(
         title: const Text("Tus Citas", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
       ),
 
+      // BODY: Scroll reactivo con próximas e historial
       body: Obx(() => SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -24,14 +33,20 @@ class PatientAppointmentsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
+                // TÍTULO: Próximas citas
                 const Text("Próximas citas", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 12),
+
+                // LISTADO: Próximas citas
                 ...controller.proximas.map((cita) => _citaCard(cita)),
 
                 const SizedBox(height: 24),
+
+                // TÍTULO: Historial
                 const Text("Historial de citas", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 12),
 
+                // MENSAJE: Si no hay historial
                 if (controller.historial.isEmpty)
                   Column(
                     children: [
@@ -41,6 +56,8 @@ class PatientAppointmentsPage extends StatelessWidget {
                       Center(child: Text("No hay citas", style: TextStyle(color: Colors.grey)))
                     ],
                   )
+
+                // LISTADO: Citas anteriores
                 else
                   ...controller.historial.map((cita) => _citaCard(cita)),
 
@@ -50,6 +67,7 @@ class PatientAppointmentsPage extends StatelessWidget {
     ); // return Scaffold(
   } // Widget build(BuildContext context) {
 
+  // MÉTODO: Widget reutilizable para mostrar una cita
   Widget _citaCard(Appointment cita) {
 
     return Container(
@@ -68,6 +86,7 @@ class PatientAppointmentsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
+          // INFORMACIÓN: Terapeuta
           Row(
             children: [
               CircleAvatar(backgroundImage: AssetImage(cita.imagen), radius: 28),
@@ -85,13 +104,16 @@ class PatientAppointmentsPage extends StatelessWidget {
           ),
 
           const SizedBox(height: 8),
+
+          // DETALLES: Fecha, hora, modalidad
           Row(children: [const Icon(Icons.calendar_today, size: 16), const SizedBox(width: 4), Text(cita.fecha)]),
           Row(children: [const Icon(Icons.access_time, size: 16), const SizedBox(width: 4), Text(cita.hora)]),
           Row(children: [const Icon(Icons.location_on, size: 16), const SizedBox(width: 4), Text(cita.modalidad)]),
+
           const SizedBox(height: 12),
 
+          // ACCIONES: Botón de sesión y chat
           Row(
-
             children: [
               Expanded(
                 child: ElevatedButton.icon(
@@ -107,7 +129,6 @@ class PatientAppointmentsPage extends StatelessWidget {
                 child: const Icon(Icons.chat_bubble_outline, color: Colors.orange),
               )
             ], // children: [
-
           ) // Row(
         ], // children: [
       ), // child: Column(
