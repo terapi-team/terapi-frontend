@@ -1,20 +1,23 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:get/get.dart';
 
+// CLASE: Modelo de detalle del terapeuta
 class TherapistDetail {
 
-  final String nombre;
-  final String enfoque;
-  final double rating;
-  final String pais;
-  final String experiencia;
-  final List<String> idiomas;
-  final List<String> especialidades;
-  final String sobreMi;
-  final List<Formacion> formaciones;
-  final String imagen;
+  // ATRIBUTOS
+  final String nombre;                    // ATRIBUTO: Nombre del terapeuta
+  final String enfoque;                   // ATRIBUTO: Enfoque terapéutico
+  final double rating;                    // ATRIBUTO: Calificación promedio
+  final String pais;                      // ATRIBUTO: País de origen
+  final String experiencia;               // ATRIBUTO: Años de experiencia
+  final List<String> idiomas;             // ATRIBUTO: Idiomas que habla
+  final List<String> especialidades;      // ATRIBUTO: Especialidades que trata
+  final String sobreMi;                   // ATRIBUTO: Descripción personal
+  final List<Formacion> formaciones;      // ATRIBUTO: Lista de formaciones académicas
+  final String imagen;                    // ATRIBUTO: Ruta de imagen
 
+  // CONSTRUCTOR
   TherapistDetail({
-
     required this.nombre,
     required this.enfoque,
     required this.rating,
@@ -25,30 +28,36 @@ class TherapistDetail {
     required this.sobreMi,
     required this.formaciones,
     required this.imagen,
-
-  }); // TherapistDetail
+  });
 
 } // class TherapistDetail {
 
+// CLASE: Modelo de formación académica
 class Formacion {
 
-  final String grado;
-  final String institucion;
+  // ATRIBUTOS
+  final String grado;           // ATRIBUTO: Nombre del grado o título
+  final String institucion;     // ATRIBUTO: Institución que lo otorgó
 
+  // CONSTRUCTOR
   Formacion({required this.grado, required this.institucion});
 
 } // class Formacion {
 
+// CLASE: Controlador para perfil de terapeuta (detalle)
 class PatientSearchAppointmentTherapistController extends GetxController {
 
+  // ATRIBUTO: Información detallada del terapeuta
   late TherapistDetail terapeuta;
 
+  // MÉTODO: onInit
   @override
   void onInit() {
     super.onInit();
     cargarDatos();
   }
 
+  // MÉTODO: Cargar datos simulados del terapeuta
   void cargarDatos() {
 
     terapeuta = TherapistDetail(
@@ -80,4 +89,4 @@ class PatientSearchAppointmentTherapistController extends GetxController {
 
     ); // terapeuta = TherapistDetail(
   } // void cargarDatos() {
-} // class SearchAppointmentTherapistController extends GetxController {
+} // class PatientSearchAppointmentTherapistController extends GetxController {

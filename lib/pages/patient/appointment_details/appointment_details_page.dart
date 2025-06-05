@@ -1,24 +1,35 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// IMPORTACIÓN: Componentes personalizados
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+
+// IMPORTACIÓN: Navegaciones
 import 'package:terapi_frontend/pages/patient/payment_methods/payment_methods_page.dart';
 
+// IMPORTACIÓN: Controlador
 import 'appointment_details_controller.dart';
 
+// CLASE: Página de detalles de cita del paciente
 class PatientAppointmentDetailsPage extends StatelessWidget {
 
+  // CONSTRUCTOR
   const PatientAppointmentDetailsPage({Key? key}) : super(key: key);
 
+  // MÉTODO: Build
   @override
   Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientAppointmentDetailsController());
 
     return Scaffold(
 
+      // APPBAR
       appBar: SettingsAppBar(title: "Detalles de la cita"),
 
+      // BODY
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -26,6 +37,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
+            // SECCIÓN: Info del terapeuta
             _buildCard(
               child: Row(
                 children: [
@@ -48,6 +60,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
+            // SECCIÓN: Detalles de fecha, hora, tipo y modalidad
             _buildCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,6 +77,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
+            // SECCIÓN: Precio total
             _buildCard(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,6 +90,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
+            // SECCIÓN: Tarjeta seleccionada y botón cambiar
             _buildCard(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,6 +115,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
 
             const Spacer(),
 
+            // BOTÓN: Confirmar y pagar
             ElevatedButton(
               onPressed: controller.confirmarPago,
               style: ElevatedButton.styleFrom(
@@ -112,6 +128,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
 
             const SizedBox(height: 8),
 
+            // BOTÓN: Cancelar
             OutlinedButton(
               onPressed: controller.cancelar,
               style: OutlinedButton.styleFrom(
@@ -127,6 +144,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
     ); // return Scaffold(
   } // Widget build(BuildContext context) {
 
+  // WIDGET: Tarjeta decorativa con borde
   Widget _buildCard({required Widget child}) {
     return Container(
       width: double.infinity,
@@ -140,6 +158,7 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
     );
   } // Widget _buildCard({required Widget child}) {
 
+  // WIDGET: Fila de detalle con ícono, etiqueta y valor
   Widget _detailRow(IconData icon, String label, String value) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -156,4 +175,4 @@ class PatientAppointmentDetailsPage extends StatelessWidget {
     );
   } // Widget _detailRow(IconData icon, String label, String value) {
 
-} // class AppointmentDetailsPage extends StatelessWidget {
+} // class PatientAppointmentDetailsPage extends StatelessWidget {

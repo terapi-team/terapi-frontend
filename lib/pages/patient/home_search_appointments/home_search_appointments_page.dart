@@ -1,29 +1,39 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// IMPORTACIÓN: Páginas relacionadas
 import 'package:terapi_frontend/pages/patient/schedule_appointment/schedule_appointment_page.dart';
 import 'package:terapi_frontend/pages/patient/search_appointment_filters/search_appointment_filters_page.dart';
 import 'package:terapi_frontend/pages/patient/search_appointment_therapist/search_appointment_therapist_page.dart';
 import 'package:terapi_frontend/pages/patient/therapist_profile_opinions/therapist_profile_opinions_page.dart';
 import 'package:terapi_frontend/pages/patient/appointment_schedules_selection/appointment_schedules_selection_page.dart';
 
+// IMPORTACIÓN: Controlador
 import 'home_search_appointments_controller.dart';
 
+// CLASE
 class PatientHomeSearchAppointmentsPage extends StatelessWidget {
 
+  // CONSTRUCTOR
   const PatientHomeSearchAppointmentsPage({Key? key}) : super(key: key);
 
+  // MÉTODO: Build
   @override
   Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientHomeSearchAppointmentsController());
 
     return Scaffold(
+
+      // BODY: Estructura general
       body: Column(
         children: [
 
           const SizedBox(height: 10),
 
+          // LIST TILE: Acceso a filtros
           ListTile(
             leading: const Icon(Icons.filter_alt_outlined, color: Colors.green),
             title: const Text("Agregar Filtros"),
@@ -34,6 +44,7 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
             },
           ),
 
+          // BUSCADOR: Campo de texto para búsqueda libre
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
@@ -45,6 +56,7 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
             ),
           ),
 
+          // LISTADO: Tarjetas de terapeutas (reactivo)
           Expanded(
             child: Obx(() => ListView.builder(
               itemCount: controller.terapeutas.length,
@@ -53,6 +65,7 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
 
                 return Card(
 
+                  // DISEÑO: Tarjeta redondeada
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   elevation: 1,
@@ -64,11 +77,12 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        // || FILA SUPERIOR: AVATAR, NOMBRE Y BOTÓN DE OPINIONES ||
+                        // FILA: Avatar, nombre, cédula, botón de opiniones
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
 
+                            // AVATAR
                             CircleAvatar(
                               radius: 30,
                               backgroundImage: AssetImage(t.imagen),
@@ -76,6 +90,7 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
 
                             const SizedBox(width: 12),
 
+                            // COLUMNA: Nombre y cédula
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,6 +101,7 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
                               ),
                             ),
 
+                            // BOTÓN: Opiniones
                             TextButton(
 
                               onPressed: () {
@@ -103,7 +119,7 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
 
                         const SizedBox(height: 10),
 
-                        // Información detallada del terapeuta
+                        // INFORMACIÓN: Idiomas, nacionalidad y enfoque
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: Column(
@@ -118,7 +134,7 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
 
                         const SizedBox(height: 12),
 
-                        // Etiquetas de especialidades
+                        // ETIQUETAS: Chips de especialidades
                         Wrap(
                           spacing: 6,
                           children: t.etiquetas.map((e) => Chip(
@@ -129,20 +145,22 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
 
                         const SizedBox(height: 12),
 
-                        // BOTONES: VER PERFIL Y AGENDAR CITA
+                        // ACCIONES: Ver perfil / Agendar cita
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
 
+                            // BOTÓN: Ver perfil
                             OutlinedButton(onPressed: () {
-                              Get.to(() => const PatientSearchAppointmentTherapistPage()); // Para futura update: Get.to(() => SearchAppointmentTherapistPage(terapeuta: t));
+                              Get.to(() => const PatientSearchAppointmentTherapistPage()); // NAVEGACIÓN
                             }, child: Text("Ver perfil")),
 
                             const SizedBox(width: 8),
 
+                            // BOTÓN: Agendar cita
                             ElevatedButton(
                               onPressed: () {
-                                Get.to(() => const PatientScheduleAppointmentPage()); // Para futura update: Get.to(() => ScheduleAppointmentPage(terapeuta: t));
+                                Get.to(() => const PatientScheduleAppointmentPage()); // NAVEGACIÓN
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.orange,
@@ -152,17 +170,17 @@ class PatientHomeSearchAppointmentsPage extends StatelessWidget {
                             ),
 
                           ],
-                        ) // Row
+                        ) // Row(
 
-                      ], // children
-                    ),  // child: Column
-                  ),  // child: Padding
-                );  // return Card
-              },  // itemBuilder: (context, index)
-            )), // child: Obx
-          ),  // Expanded
-        ],  // children
-      ),  // body: Column
-    ); // return Scaffold
-  } // Widget build(BuildContext context)
-} // class HomeSearchAppointmentsPage extends StatelessWidget
+                      ], // children: [
+                    ),  // child: Column(
+                  ),  // child: Padding(
+                );  // return Card(
+              },  // itemBuilder: (context, index) {
+            )), // child: Obx(() => ListView.builder(
+          ),  // Expanded(
+        ],  // children: [
+      ),  // body: Column(
+    ); // return Scaffold(
+  } // Widget build(BuildContext context) {
+} // class PatientHomeSearchAppointmentsPage extends StatelessWidget {
