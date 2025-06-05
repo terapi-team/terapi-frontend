@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../pages/patient/appointments/appointments_page.dart';
+import '../pages/patient/chat.dart';
+import '../pages/patient/home_search_appointments/home_search_appointments_page.dart';
+import '../pages/patient/profile.dart';
+
 class AppNavigation extends StatefulWidget {
   final int initialIndex;
   const AppNavigation({Key? key, this.initialIndex = 0}) : super(key: key);
@@ -14,10 +19,10 @@ class _AppNavigationState extends State<AppNavigation> {
   late PageController _pageController;
 
   final List<Widget> _mainPages = [
-    Center(child: Text('Home', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Appointments', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Chat', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Profile', style: TextStyle(fontSize: 24))),
+    const PatientHomeSearchAppointmentsPage(),
+    const PatientAppointmentsPage(),
+    const PatientChatsPage(),
+    const PatientProfilePage(),
   ];
 
   @override
