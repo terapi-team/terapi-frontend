@@ -1,16 +1,22 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:get/get.dart';
 
+// CLASE: Modelo de pregunta frecuente del centro de ayuda
 class PatientHelpQuestion {
 
-  final String title;
-  final String category;
+  // ATRIBUTOS
+  final String title; // ATRIBUTO: Título de la pregunta
+  final String category; // ATRIBUTO: Categoría
 
+  // CONSTRUCTOR
   PatientHelpQuestion({required this.title, required this.category});
 
 }
 
+// CLASE
 class PatientHelpCenterController extends GetxController {
 
+  // ATRIBUTO: Lista observable de preguntas frecuentes agrupadas por categoría
   final questions = <PatientHelpQuestion>[
 
     PatientHelpQuestion(title: '¿Cómo agendar una cita?', category: 'Citas y Agenda'),
@@ -25,7 +31,8 @@ class PatientHelpCenterController extends GetxController {
 
   ].obs;
 
+  // GETTER: Lista de categorías únicas extraídas de las preguntas
   List<String> get categories =>
       questions.map((q) => q.category).toSet().toList();
 
-}
+} // class PatientHelpCenterController extends GetxController {

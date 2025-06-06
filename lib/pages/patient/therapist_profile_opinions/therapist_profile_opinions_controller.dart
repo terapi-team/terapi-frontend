@@ -1,13 +1,16 @@
-
+// IMPORTACIÓN: SDK y externos
 import 'package:get/get.dart';
 
+// CLASE: Modelo de opinión de paciente
 class Opinion {
 
-  final String nombre;
-  final String fecha;
-  final int estrellas;
-  final String comentario;
+  // ATRIBUTOS
+  final String nombre;      // ATRIBUTO: Nombre del paciente que opina
+  final String fecha;       // ATRIBUTO: Fecha de publicación
+  final int estrellas;      // ATRIBUTO: Valoración en estrellas (1 a 5)
+  final String comentario;  // ATRIBUTO: Texto del comentario
 
+  // CONSTRUCTOR
   Opinion({
     required this.nombre,
     required this.fecha,
@@ -15,21 +18,26 @@ class Opinion {
     required this.comentario,
   });
 
-} // 
+} // class Opinion {
 
+// CLASE: Controlador para opiniones del perfil del terapeuta
 class PatientTherapistProfileOpinionsController extends GetxController {
 
-  var opiniones = <Opinion>[].obs;
-  var valoracion = 0.obs;
-  var comentario = ''.obs;
+  // ATRIBUTOS
+  var opiniones = <Opinion>[].obs;  // ATRIBUTO: Lista de opiniones (Observable)
+  var valoracion = 0.obs;           // ATRIBUTO: Valoración seleccionada para nueva opinión
+  var comentario = ''.obs;          // ATRIBUTO: Comentario escrito por el paciente
 
+  // MÉTODO: Se ejecuta al iniciar el controlador
   @override
   void onInit() {
     super.onInit();
     cargarOpiniones();
   }
 
+  // MÉTODO: Cargar lista simulada de opiniones
   void cargarOpiniones() {
+
     opiniones.value = [
 
       Opinion(
@@ -48,15 +56,16 @@ class PatientTherapistProfileOpinionsController extends GetxController {
             "Muy buena experiencia. Las sesiones son muy productivas y se nota su experiencia en el campo.",
       ),
 
-    ];
-  }
+    ]; // opiniones.value = [
+  } // void cargarOpiniones() {
 
+  // MÉTODO: Publicar una nueva opinión (si es válida)
   void publicarComentario() {
     if (valoracion.value > 0 && comentario.value.isNotEmpty) {
 
       opiniones.insert(
 
-        0,
+        0, // INSERCIÓN: AL INICIO
 
         Opinion(
           nombre: "Usuario Anónimo",
@@ -67,9 +76,10 @@ class PatientTherapistProfileOpinionsController extends GetxController {
 
       );
 
+      // REINICIO: Limpia campos tras publicar
       valoracion.value = 0;
       comentario.value = '';
 
     } // if (valoracion.value > 0 && comentario.value.isNotEmpty) {
   } // void publicarComentario() {
-} // class TherapistProfileOpinionsController extends GetxController {
+} // class PatientTherapistProfileOpinionsController extends GetxController {

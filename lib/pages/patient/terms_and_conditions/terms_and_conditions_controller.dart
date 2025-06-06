@@ -1,12 +1,17 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:get/get.dart';
 
+// CLASE
 class PatientTermsAndConditionsController extends GetxController {
 
+  // ATRIBUTO: Título principal de la sección
   final termsTitle = 'Términos y Condiciones de Uso';
 
+  // ATRIBUTO: Introducción general del documento
   final termsIntro =
       'Bienvenido a nuestra plataforma de terapia en línea. Al acceder y utilizar este servicio, aceptas cumplir con los siguientes términos y condiciones.';
 
+  // ATRIBUTO: Secciones detalladas de los términos
   final sections = [
     {
       'title': '1. Servicios',
@@ -28,6 +33,5 @@ class PatientTermsAndConditionsController extends GetxController {
       'content':
           'Las cancelaciones deben realizarse con al menos 24 horas de anticipación para recibir un reembolso completo.',
     },
-  ];  // sections
-
-} // class
+  ]; // final sections = [
+} // class PatientTermsAndConditionsController extends GetxController {

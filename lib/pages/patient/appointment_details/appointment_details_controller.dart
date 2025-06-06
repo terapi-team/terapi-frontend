@@ -1,12 +1,18 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// IMPORTACIÓN: Componentes personalizados
 import 'package:terapi_frontend/components/app_navigation.dart';
+
+// IMPORTACIÓN: Controladores relacionados
 import 'package:terapi_frontend/pages/patient/appointments/appointments_controller.dart';
 
+// CLASE: Controlador para detalles de la cita
 class PatientAppointmentDetailsController extends GetxController {
 
+  // ATRIBUTOS: Datos fijos simulados para la cita
   final terapeutaNombre = "Dra. María García";
   final especialidad = "Psicología Clínica";
   final fecha = "26 Enero, 2024";
@@ -16,16 +22,18 @@ class PatientAppointmentDetailsController extends GetxController {
   final modalidad = "Consulta virtual";
   final total = "S/ 140.00 PEN";
 
-  var tarjeta = "Visa terminada en 4242".obs;
+  // ATRIBUTO: Tarjeta seleccionada (Observable)
+  var tarjeta = "Visa terminada en 4242".obs; // VALOR: "${metodo.brand} terminada en ${metodo.last4}"
 
+  // MÉTODO: Confirmar y registrar cita
   void confirmarPago() {
 
-    // Simula confirmación en la terminal
     print("Pago confirmado");
 
-    // Cierra cualquier snackbar previo antes de mostrar uno nuevo
+    // CIERRE: Cierra Snackbar si está abierto
     if (Get.isSnackbarOpen) Get.closeCurrentSnackbar();
 
+    // ÍCONO: SVG de confirmación
     final successIcon = SvgPicture.asset(
       'assets/icons/circle-check.svg',
       width: 24,
@@ -33,7 +41,12 @@ class PatientAppointmentDetailsController extends GetxController {
       colorFilter: const ColorFilter.mode(Color(0xFF2E7D32), BlendMode.srcIn),
     );
 
-    // Crea la nueva cita
+    // CONTROLADOR: Recupera o registra el controlador de citas
+    final citasController = Get.isRegistered<PatientAppointmentsController>()
+        ? Get.find<PatientAppointmentsController>()
+        : Get.put(PatientAppointmentsController());
+
+    // VARIABLE: Nueva cita creada con datos actuales
     final nuevaCita = Appointment(
       nombre: terapeutaNombre,
       especialidad: especialidad,
@@ -43,11 +56,9 @@ class PatientAppointmentDetailsController extends GetxController {
       imagen: 'assets/images/therapists/maria.jpg',
     );
 
-    // Agrega la cita al controlador de citas
-    final citasController = Get.find<PatientAppointmentsController>();
     citasController.agregarCita(nuevaCita);
 
-    // Muestra snackbar de confirmación
+    // SNACKBAR: Mensaje de confirmación
     Get.snackbar(
       "¡Listo!",
       "Tu cita ha sido agendada exitosamente.",
@@ -59,23 +70,28 @@ class PatientAppointmentDetailsController extends GetxController {
       icon: successIcon,
     );
 
-    // Después de mostrar el snackbar
+    // DELAY: 2 segundos
     Future.delayed(const Duration(seconds: 2), () {
-      Get.offAll(() => const AppNavigation(initialIndex: 1));
+      Get.offAll(() => const AppNavigation(initialIndex: 1)); // NAVEGACIÓN: Navega a `PatientAppointmentsPage` (`appointments_page.dart`)
     });
 
   } // void confirmarPago() {
 
+  // MÉTODO: Cancelar cita (actualmente solo imprime)
   void cancelar() {
     print("Cita cancelada");
   }
 
+  // MÉTODO: Actualiza la tarjeta seleccionada
   void actualizarTarjeta(dynamic metodo) {
-    // Asegúrate que `metodo` tiene las propiedades esperadas
+
+    // CONDICIONAL: Valida que los datos existan
     if (metodo != null && metodo.brand != null && metodo.last4 != null) {
+
       tarjeta.value = "${metodo.brand} terminada en ${metodo.last4}";
       print("Tarjeta actualizada a: ${tarjeta.value}");
-    }
-  }
 
-} // class AppointmentDetailsController
+    }
+  } // void actualizarTarjeta(dynamic metodo) {
+
+} // class PatientAppointmentDetailsController extends GetxController {

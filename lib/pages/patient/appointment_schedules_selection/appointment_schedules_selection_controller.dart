@@ -1,32 +1,47 @@
-
+// IMPORTACIÓN: SDK y externos
 import 'package:get/get.dart';
 
+// CLASE: Modelo de horario individual
 class ScheduleSlot {
 
-  final String hora;
-  final bool disponible;
+  // ATRIBUTOS
+  final String hora;        // ATRIBUTO: Hora del slot (ej. "08:00")
+  final bool disponible;    // ATRIBUTO: Disponibilidad del slot
 
+  // CONSTRUCTOR
   ScheduleSlot({required this.hora, required this.disponible});
 
 } // class ScheduleSlot {
 
+// CLASE: Controlador para selección de horarios de citas
 class PatientAppointmentSchedulesSelectionController extends GetxController {
 
+  // ATRIBUTO: Lista de fechas disponibles para selección (simuladas)
   var fechas = ["Sáb\n25 Ene.", "Dom\n26 Ene.", "Lun\n27 Ene.", "Mar\n28 Ene."];
+
+  // ATRIBUTO: Índice de la fecha seleccionada (Observable)
   var fechaSeleccionada = 0.obs;
 
+  // ATRIBUTO: Lista de horarios para una fecha dada (Observable)
   var horarios = <ScheduleSlot>[].obs;
+
+  // ATRIBUTO: Horario seleccionado (Observable)
   var horarioSeleccionado = ''.obs;
 
+  // ATRIBUTO: Duración del servicio (fijo en esta vista)
   final duracion = "50 minutos";
+
+  // ATRIBUTO: Precio del servicio (fijo en esta vista)
   final precio = "S/ 140.00 PEN";
 
+  // MÉTODO: Inicialización
   @override
   void onInit() {
     super.onInit();
     cargarHorarios();
   }
 
+  // MÉTODO: Cargar horarios simulados para la fecha seleccionada
   void cargarHorarios() {
     horarios.value = [
       ScheduleSlot(hora: "07:00", disponible: true),
@@ -55,8 +70,9 @@ class PatientAppointmentSchedulesSelectionController extends GetxController {
     ];
   } // void cargarHorarios() {
 
+  // MÉTODO: Establecer el horario seleccionado
   void seleccionarHorario(String hora) {
     horarioSeleccionado.value = hora;
   }
 
-} // class AppointmentSchedulesSelectionController extends GetxController {
+} // class PatientAppointmentSchedulesSelectionController extends GetxController {
