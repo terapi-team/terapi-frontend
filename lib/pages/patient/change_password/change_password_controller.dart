@@ -1,14 +1,19 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// CLASE
 class PatientChangePasswordController extends GetxController {
 
-  final currentPasswordCtrl = TextEditingController();
-  final newPasswordCtrl = TextEditingController();
-  final confirmPasswordCtrl = TextEditingController();
+  // ATRIBUTOS: Controladores de texto
+  final currentPasswordCtrl = TextEditingController(); // ATRIBUTO: Contraseña actual
+  final newPasswordCtrl = TextEditingController(); // ATRIBUTO: Nueva contraseña
+  final confirmPasswordCtrl = TextEditingController(); // ATRIBUTO: Nueva contraseña (Confirmación)
 
+  // ATRIBUTO: Estado de carga (Observable)
   final isLoading = false.obs;
 
+  // MÉTODO: Guardar nueva contraseña
   Future<void> savePassword() async {
 
     if (!_isValid()) return;
@@ -16,16 +21,20 @@ class PatientChangePasswordController extends GetxController {
 
     try {
       
-      await Future.delayed(const Duration(seconds: 2)); // Simulación de petición
+      // Simulación de espera por backend
+      await Future.delayed(const Duration(seconds: 2));
 
-      print('Contraseña actual: ${currentPasswordCtrl.text}'); // Mostrar en terminal, hecho para visualizar el correcto funcionamiento
-      print('Nueva contraseña: ${newPasswordCtrl.text}');      // Mostrar en terminal, hecho para visualizar el correcto funcionamiento
+      // Impresión de datos en consola
+      print('Contraseña actual: ${currentPasswordCtrl.text}');
+      print('Nueva contraseña: ${newPasswordCtrl.text}');
 
+      // Snackbar: Notificación de éxito
       Get.snackbar('Éxito', 'Contraseña actualizada correctamente',
           snackPosition: SnackPosition.BOTTOM);
 
     } catch (e) {
 
+      // Snackbar: Notificación de error
       Get.snackbar('Error', 'No se pudo actualizar la contraseña',
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.redAccent,
@@ -38,6 +47,7 @@ class PatientChangePasswordController extends GetxController {
     }
   }
 
+  // MÉTODO: Validar campos del formulario
   bool _isValid() {
 
     final current = currentPasswordCtrl.text.trim();
@@ -68,6 +78,7 @@ class PatientChangePasswordController extends GetxController {
 
   }
 
+  // MÉTODO: onClose (dispose de controladores)
   @override
   void onClose() {
     currentPasswordCtrl.dispose();

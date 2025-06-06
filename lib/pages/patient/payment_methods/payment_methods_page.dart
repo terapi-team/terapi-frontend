@@ -1,32 +1,45 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// IMPORTACIÓN: Componentes personalizados
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+
+// IMPORTACIÓN: Páginas internas
 import 'package:terapi_frontend/pages/patient/add_payment_card/add_payment_card_page.dart';
 
+// IMPORTACIÓN: Controlador
 import 'payment_methods_controller.dart';
 
+// CLASE
 class PatientPaymentMethodsPage extends StatelessWidget {
  
+  // ATRIBUTO: Define si se accedió desde `PatientAppointmentDetailsPage` (appointment_details_page.dart)
   final bool seleccionDesdeCita;
 
+  // CONSTRUCTOR
   const PatientPaymentMethodsPage({super.key, this.seleccionDesdeCita = false});
 
+  // MÉTODO: Build
   @override
-  Widget build(BuildContext context) {  // Identificar si viene desde `appointment details` (Al tocar una Card ddebe poder seleccionar una tarjeta para pagar) o `profile` (Al tocar una Card debe mostrar su información para editarla)
+  Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientPaymentMethodsController());
 
     return Scaffold(
 
+      // APPBAR
       appBar: const SettingsAppBar(title: 'Métodos de pago'),
 
+      // BODY: Lista de tarjetas observables
       body: Obx(() => ListView(
 
             padding: const EdgeInsets.all(16),
             children: [
 
+              // LISTA: Tarjetas registradas
               ...controller.methods.asMap().entries.map((entry) {
                 final index = entry.key;
                 final method = entry.value;
@@ -35,12 +48,19 @@ class PatientPaymentMethodsPage extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
 
+                    // COMPORTAMIENTO: Según origen de navegación
                     onTap: () {
+
+                      // CONDICIONAL: Si ha navegado desde `PatientAppointmentDetailsPage` (`appointment_details_page.dart`)
                       if (seleccionDesdeCita) {
-                        // Si la pantalla se usó desde appointment_details_page.dart
-                        Get.back(result: method); // Retorna la tarjeta seleccionada
-                      } else {
-                        // Comportamiento por defecto desde perfil
+
+                        // RETORNO: PaymentMethod (Nota: Tarjeta seleccionada)
+                        Get.back(result: method);
+
+                      }
+                      
+                      // ELSE: Si ha navegado desde `PatientProfilePage` (`profile.dart`)
+                      else {
                         Get.snackbar(
                           "Información",
                           "Para cambiar la tarjeta, primero debes eliminarla y registrar una nueva.",
@@ -49,6 +69,7 @@ class PatientPaymentMethodsPage extends StatelessWidget {
                       }
                     },
 
+                    // ICONO: Marca de tarjeta
                     leading: CircleAvatar(
                       backgroundColor: const Color(0xFFFFF3E0),
                       child: SvgPicture.asset(
@@ -60,8 +81,11 @@ class PatientPaymentMethodsPage extends StatelessWidget {
                       ),
                     ),
 
+                    // INFORMACIÓN: Marca y terminación
                     title: Text('${method.brand} terminada en ${method.last4}'),
                     subtitle: Text('Expira: ${method.expiration}'),
+
+                    // BOTÓN: Eliminar tarjeta
                     trailing: TextButton(
                       onPressed: () => controller.removeMethod(index),
                       child: const Text(
@@ -74,6 +98,7 @@ class PatientPaymentMethodsPage extends StatelessWidget {
                 ); // return Card(
               }), // ...controller.methods.asMap().entries.map((entry) {
 
+              // BOTÓN: Agregar nueva tarjeta
               GestureDetector(
                 onTap: controller.addNewCard,
                 child: Container(
@@ -98,14 +123,14 @@ class PatientPaymentMethodsPage extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         const Text('Agregar nueva tarjeta'),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                      ], // children: [
+                    ), // child: Row(
+                  ), // child: Center(
+                ), // child: Container(
+              ), // GestureDetector(
 
-            ],  // children
-          )),  // body
-    );  // Scaffold
-  }  // Widget
-}  // class
+            ], // children: [
+          )), // body: Obx(() => ListView(
+    ); // return Scaffold(
+  } // Widget build(BuildContext context) {
+} // class PatientPaymentMethodsPage extends StatelessWidget {

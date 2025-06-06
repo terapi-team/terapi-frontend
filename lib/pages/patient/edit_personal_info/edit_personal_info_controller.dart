@@ -1,21 +1,29 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// IMPORTACIÓN: SDK y externos
+import 'package:flutter/material.dart'; // Widgets y diseño base
+import 'package:get/get.dart'; // GetX: estado, rutas, dependencias
 
+// CLASE
 class PatientEditPersonalInfoController extends GetxController {
 
-  final nameCtrl = TextEditingController();
-  final emailCtrl = TextEditingController();
-  final phoneCtrl = TextEditingController();
+   // ATRIBUTOS: Controladores de texto
+  final nameCtrl = TextEditingController(); // ATRIBUTO: Nombre
+  final emailCtrl = TextEditingController(); // ATRIBUTO: Email
+  final phoneCtrl = TextEditingController(); // ATRIBUTO: Teléfono
+
+  // ATRIBUTO: Fecha de nacimiento (Observable)
   final birthDate = Rx<DateTime?>(null);
 
+  // ATRIBUTO: Estado de carga (Observable)
   final isLoading = false.obs;
 
+ // MÉTODO: onInit
   @override
   void onInit() {
     super.onInit();
     _loadInitialData();
   }
 
+  // MÉTODO: Cargar datos iniciales
   void _loadInitialData() {
     nameCtrl.text = 'Juan Pérez';
     emailCtrl.text = 'juan.perez@email.com';
@@ -23,6 +31,7 @@ class PatientEditPersonalInfoController extends GetxController {
     birthDate.value = DateTime(1990, 1, 1);
   }
 
+  // MÉTODO: Seleccionar fecha de nacimiento
   void pickBirthDate(BuildContext context) async {
 
     DateTime initial = birthDate.value ?? DateTime(1990, 1, 1);
@@ -40,6 +49,7 @@ class PatientEditPersonalInfoController extends GetxController {
 
   }
 
+  // MÉTODO: Guardar cambios
   Future<void> saveChanges() async {
 
     if (!_isValid()) return;
@@ -48,18 +58,22 @@ class PatientEditPersonalInfoController extends GetxController {
 
     try {
 
+      // Simulación de espera por backend
       await Future.delayed(const Duration(seconds: 2));
 
+      // Impresión de datos en consola
       print('Nombre: ${nameCtrl.text}');
       print('Email: ${emailCtrl.text}');
       print('Teléfono: ${phoneCtrl.text}');
       print('Fecha de nacimiento: ${birthDate.value?.toIso8601String()}');
 
+      // Snackbar: Notificación de éxito
       Get.snackbar('Éxito', 'Cambios guardados correctamente',
           snackPosition: SnackPosition.BOTTOM);
 
     } catch (e) {
 
+      // Snackbar: Notificación de error
       Get.snackbar('Error', 'No se pudo guardar',
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.redAccent,
@@ -72,6 +86,7 @@ class PatientEditPersonalInfoController extends GetxController {
     }
   }
 
+  // MÉTODO: Validar campos del formulario
   bool _isValid() {
 
     final name = nameCtrl.text.trim();
@@ -112,6 +127,7 @@ class PatientEditPersonalInfoController extends GetxController {
 
   }
 
+  // MÉTODO: onClose (dispose de controladores)
   @override
   void onClose() {
     nameCtrl.dispose();

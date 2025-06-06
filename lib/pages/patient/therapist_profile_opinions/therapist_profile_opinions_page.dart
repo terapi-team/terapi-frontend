@@ -1,31 +1,38 @@
-
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// IMPORTACIÓN: Componentes personalizados
 import 'package:terapi_frontend/components/setting_app_bar.dart';
 
+// IMPORTACIÓN: Controlador
 import 'therapist_profile_opinions_controller.dart';
 
+// CLASE: Página para mostrar y publicar opiniones de pacientes
 class PatientTherapistProfileOpinionsPage extends StatelessWidget {
 
+  // CONSTRUCTOR
   const PatientTherapistProfileOpinionsPage({Key? key}) : super(key: key);
 
+  // MÉTODO: Build
   @override
   Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientTherapistProfileOpinionsController());
 
     return Scaffold(
 
+      // APPBAR
       appBar: SettingsAppBar(title: "Opiniones de pacientes"),
 
+      // BODY
       body: Padding(
-
         padding: const EdgeInsets.all(16.0),
         child: Column(
-
           children: [
 
+            // SECCIÓN: Título de valoración
             const Align(
               alignment: Alignment.centerLeft,
               child: Text("Tu valoración", style: TextStyle(fontWeight: FontWeight.bold)),
@@ -33,7 +40,8 @@ class PatientTherapistProfileOpinionsPage extends StatelessWidget {
 
             const SizedBox(height: 4),
 
-            Obx(() => Row(
+            // SECCIÓN: Estrellas seleccionables (reactiva)
+            Obx(() => Row( // OBSERVACIÓN: Cambio de `controller.valoracion.value`
               children: List.generate(5, (index) {
                 return IconButton(
                   icon: Icon(
@@ -47,6 +55,7 @@ class PatientTherapistProfileOpinionsPage extends StatelessWidget {
               }),
             )),
 
+            // CAMPO: Comentario del paciente
             TextField(
               maxLines: 3,
               decoration: const InputDecoration(
@@ -58,6 +67,7 @@ class PatientTherapistProfileOpinionsPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
+            // BOTÓN: Publicar comentario
             SizedBox(
               width: double.infinity,
               height: 48,
@@ -73,13 +83,14 @@ class PatientTherapistProfileOpinionsPage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
+            // SECCIÓN: Lista de opiniones
             Expanded(
-              child: Obx(() => ListView.builder(
+              child: Obx(() => ListView.builder( // OBSERVACIÓN: Cambio de ``
 
                 itemCount: controller.opiniones.length,
                 itemBuilder: (context, index) {
 
-                  final o = controller.opiniones[index];
+                  final opi = controller.opiniones[index];
 
                   return Card(
 
@@ -92,6 +103,7 @@ class PatientTherapistProfileOpinionsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
+                          // CABECERA: Avatar, nombre, fecha
                           Row(
                             children: [
                               const CircleAvatar(
@@ -100,24 +112,26 @@ class PatientTherapistProfileOpinionsPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 8),
                               Expanded(
-                                child: Text(o.nombre, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                child: Text(opi.nombre, style: const TextStyle(fontWeight: FontWeight.bold)),
                               ),
-                              Text(o.fecha, style: const TextStyle(color: Colors.grey)),
+                              Text(opi.fecha, style: const TextStyle(color: Colors.grey)),
                             ],
                           ),
 
                           const SizedBox(height: 6),
 
+                          // ESTRELLAS: Valoración visual
                           Row(
                             children: List.generate(5, (i) => Icon(
-                              i < o.estrellas ? Icons.star : Icons.star_border,
+                              i < opi.estrellas ? Icons.star : Icons.star_border,
                               color: Colors.orange, size: 20,
                             )),
                           ),
 
                           const SizedBox(height: 6),
 
-                          Text(o.comentario),
+                          // TEXTO: Comentario del paciente
+                          Text(opi.comentario),
 
                         ], // children: [
                       ), // child: Column(

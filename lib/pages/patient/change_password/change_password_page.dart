@@ -1,29 +1,40 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// IMPORTACIÓN: Componentes personalizados
 import 'package:terapi_frontend/components/setting_app_bar.dart';
+
+// IMPORTACIÓN: Controlador
 import 'change_password_controller.dart';
 
+// CLASE
 class PatientChangePasswordPage extends StatelessWidget {
 
+  // CONSTRUCTOR
   const PatientChangePasswordPage({super.key});
 
+  // MÉTODO: Build
   @override
   Widget build(BuildContext context) {
 
+    // INYECCIÓN: Controlador
     final controller = Get.put(PatientChangePasswordController());
 
     return Scaffold(
 
+      // APPBAR
       appBar: const SettingsAppBar(title: 'Cambiar contraseña'),
 
+      // BODY
       body: SingleChildScrollView(
 
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
 
+            // CAMPO: Contraseña actual
             TextFormField(
               controller: controller.currentPasswordCtrl,
               obscureText: true,
@@ -32,6 +43,7 @@ class PatientChangePasswordPage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
+            // CAMPO: Nueva contraseña
             TextFormField(
               controller: controller.newPasswordCtrl,
               obscureText: true,
@@ -40,6 +52,7 @@ class PatientChangePasswordPage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
+            // CAMPO: Confirmar nueva contraseña
             TextFormField(
               controller: controller.confirmPasswordCtrl,
               obscureText: true,
@@ -48,7 +61,8 @@ class PatientChangePasswordPage extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            Obx(() => SizedBox(
+            // BOTÓN: Guardar contraseña
+            Obx(() => SizedBox( // OBSERVABLE: Cambio de `controller.isLoading.value`
                   width: double.infinity,
                   child: ElevatedButton.icon(
                     icon: controller.isLoading.value
@@ -77,8 +91,8 @@ class PatientChangePasswordPage extends StatelessWidget {
                   ),
                 )),
           ],  // children
-        ),  // column
-      ),  // body
-    );  // Scaffold
-  } // Widget
-} // PatientChangePasswordPage
+        ),  // child: Column(
+      ),  // body: SingleChildScrollView(
+    );  // return Scaffold(
+  } // Widget build(BuildContext context) {
+} // class PatientChangePasswordPage extends StatelessWidget {

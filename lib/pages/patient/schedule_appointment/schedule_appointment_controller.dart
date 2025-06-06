@@ -1,36 +1,44 @@
+// IMPORTACIÓN: SDK y externos
 import 'package:get/get.dart';
 
+// CLASE: Modelo de servicio de cita
 class ServiceOption {
 
-  final String titulo;
-  final String subtitulo;
-  final String duracion;
-  final String precio;
-  final String icono;
+  // ATRIBUTOS
+  final String titulo;     // ATRIBUTO: Título del servicio (ej. "Cita individual")
+  final String subtitulo;  // ATRIBUTO: Descripción breve del servicio
+  final String duracion;   // ATRIBUTO: Duración de la sesión
+  final String precio;     // ATRIBUTO: Precio del servicio
+  final String icono;      // ATRIBUTO: Ruta al ícono ilustrativo
 
+  // CONSTRUCTOR
   ServiceOption({
-
     required this.titulo,
     required this.subtitulo,
     required this.duracion,
     required this.precio,
     required this.icono,
-
   });
 
-} // ServiceOption
+} // class ServiceOption {
 
+// CLASE: Controlador para mostrar lista de servicios disponibles
 class PatientScheduleAppointmentController extends GetxController {
+
+  // ATRIBUTO: Lista observable de servicios disponibles
   var servicios = <ServiceOption>[].obs;
 
+  // MÉTODO: Se ejecuta al iniciar el controlador
   @override
   void onInit() {
     super.onInit();
     cargarServicios();
   }
 
+  // MÉTODO: Cargar lista simulada de servicios
   void cargarServicios() {
 
+    // LISTA: Opciones de servicios
     servicios.value = [
 
       ServiceOption(
@@ -66,5 +74,5 @@ class PatientScheduleAppointmentController extends GetxController {
       ),
 
     ]; // servicios.value = [
-  } // void cargarServicios
-} // class ScheduleAppointmentController extends GetxController {
+  } // void cargarServicios() {
+} // class PatientScheduleAppointmentController extends GetxController {
