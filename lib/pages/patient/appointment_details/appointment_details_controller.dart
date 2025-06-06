@@ -41,6 +41,11 @@ class PatientAppointmentDetailsController extends GetxController {
       colorFilter: const ColorFilter.mode(Color(0xFF2E7D32), BlendMode.srcIn),
     );
 
+    // CONTROLADOR: Recupera o registra el controlador de citas
+    final citasController = Get.isRegistered<PatientAppointmentsController>()
+        ? Get.find<PatientAppointmentsController>()
+        : Get.put(PatientAppointmentsController());
+
     // VARIABLE: Nueva cita creada con datos actuales
     final nuevaCita = Appointment(
       nombre: terapeutaNombre,
@@ -51,8 +56,6 @@ class PatientAppointmentDetailsController extends GetxController {
       imagen: 'assets/images/therapists/maria.jpg',
     );
 
-    // CONTROLADOR: Recupera el controlador de citas
-    final citasController = Get.find<PatientAppointmentsController>();
     citasController.agregarCita(nuevaCita);
 
     // SNACKBAR: Mensaje de confirmación
