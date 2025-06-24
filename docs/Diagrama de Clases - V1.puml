@@ -1,4 +1,4 @@
-@startuml DIAGRAMA DE CLASES - VERSIÓN 06
+@startuml DIAGRAMA DE CLASES - VERSIÓN 01
 
 abstract class Usuario {
     - id: int
