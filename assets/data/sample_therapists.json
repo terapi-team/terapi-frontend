@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Dra. María García",
+    "cedula": "970897",
+    "idiomas": ["Español", "Inglés"],
+    "nacionalidad": "Peruana",
+    "enfoque": "Terapia Cognitivo-Conductual",
+    "etiquetas": ["Ansiedad", "Depresión", "Estrés"],
+    "imagen": "assets/images/therapists/maria.jpg"
+  },
+  {
+    "nombre": "Dr. Carlos Rodríguez",
+    "cedula": "849206",
+    "idiomas": ["Español"],
+    "nacionalidad": "Peruana",
+    "enfoque": "Psicología Clínica",
+    "etiquetas": ["Terapia de Pareja", "Autoestima", "Relaciones"],
+    "imagen": "assets/images/therapists/carlos.jpg"
+  }
+]

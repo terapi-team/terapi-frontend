@@ -1,3 +1,7 @@
+// EXPLICACIÓN
+// Este módulo permite al paciente seleccionar una fecha y un horario disponible para su cita,
+// considerando duración y precio. Está pensado para usarse después de haber elegido un servicio y terapeuta.
+
 // IMPORTACIÓN: SDK y externos
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,7 +47,7 @@ class PatientAppointmentSchedulesSelectionPage extends StatelessWidget {
               children: List.generate(controller.fechas.length, (index) {
                 final selected = controller.fechaSeleccionada.value == index;
                 return GestureDetector(
-                  onTap: () => controller.fechaSeleccionada.value = index,
+                  onTap: () => controller.seleccionarFecha(index),
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                     decoration: BoxDecoration(
