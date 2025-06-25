@@ -1,0 +1,170 @@
+@startuml DIAGRAMA DE CLASES - VERSIÓN 02
+
+' === Definición de Enums ===
+
+enum DiaSemana {
+    Lunes
+    Martes
+    Miercoles
+    Jueves
+    Viernes
+    Sabado
+    Domingo
+}
+
+enum TipoCita {
+    Online
+    Presencial
+}
+
+enum EstadoCita {
+    Agendada
+    Confirmada
+    Cancelada
+    Completada
+}
+
+enum TipoDocumento {
+    DNI
+    Pasaporte
+    CarnetExtranjeria
+}
+
+enum EstadoRevision {
+    Pendiente
+    Aprobado
+    Rechazado
+}
+
+enum Genero {
+    Masculino
+    Femenino
+    Otro
+}
+
+enum Modalidad {
+    Video
+    Audio
+    Chat
+}
+
+enum Especialidad {
+    Psicologia
+    Fisioterapia
+    TerapiaOcupacional
+    Logopedia
+}
+
+' === Paquetes y Clases ===
+package "Gestión de Usuarios" {
+  abstract class Usuario <<entity>> {
+      - id: int
+      - nombre: string
+      - email: string
+      - fechaNacimiento: Date
+      - password: string
+      - telefono: string
+
+      + iniciarSesion(): void
+      + cerrarSesion(): void
+      + cambiarContrasenia(nueva: string): void
+  }
+
+  class Paciente <<entity>> {
+      - fechaRegistro: Date
+
+      + verHistorialCitas(): List<Cita>
+      + seleccionarMetodoPago(): MetodoPago
+  }
+
+  class Terapeuta <<entity>> {
+      - descripcion: string
+      - experienciaAnios: int
+      - calificacionPromedio: float
+      - especialidades: Set<Especialidad>
+      - idiomas: Set<String>
+      - pais: String
+      - genero: Genero
+
+      + editarPerfil(): void
+      + grabarDocumento(doc: Documento): void
+  }
+
+  Usuario <|-- Paciente
+  Usuario <|-- Terapeuta
+}
+
+package "Citas y Agendas" {
+  class Cita <<entity>> {
+      - id: int
+      - fecha: Date
+      - hora: Time
+      - tipo: TipoCita
+      - estado: EstadoCita
+      - tarifa: float
+      - duracion: int
+      - modalidad: Modalidad
+
+      + unirseSesion(): void
+      + verChat(): Chat
+  }
+
+  Paciente "1" o-- "0..*" Cita    : agenda
+  Terapeuta "1" o-- "0..*" Cita   : atiende
+}
+
+package "Notificaciones y Reseñas" {
+  class Notificacion <<entity>> {
+      - id: int
+      - mensaje: string
+      - fechaEnvio: Date
+      - vista: boolean
+
+      + marcarComoVista(): void
+  }
+  Usuario "1" *-- "0..*" Notificacion : recibe
+
+  class Reseña <<entity>> {
+      - id: int
+      - puntaje: int
+      - comentario: string
+      - fecha: Date
+
+      + publicar(): void
+  }
+  Paciente "1" o-- "0..*" Reseña    : escribe
+  Terapeuta "1" o-- "0..*" Reseña   : recibe
+}
+
+package "Pagos y Finanzas" {
+  class MetodoPago <<entity>> {
+      - id: int
+      - tipo: string
+      - numeroTarjeta: string
+      - vencimiento: Date
+      - nombreTitular: string
+      - tipoDocumento: TipoDocumento
+      - numeroDocumento: string
+  }
+  Paciente "1" o-- "0..*" MetodoPago : posee
+}
+
+package "Horarios y Cuentas" {
+  class Horario <<entity>> {
+      - id: int
+      - diaSemana: DiaSemana
+      - horaInicio: Time
+      - horaFin: Time
+  }
+  Terapeuta "1" o-- "0..*" Horario : define
+
+  class CuentaBancaria <<entity>> {
+      - banco: string
+      - tipoCuenta: string
+      - numeroCuenta: string
+      - titular: string
+      - ruc: string
+  }
+  Terapeuta "1" o-- "1" CuentaBancaria : registra
+}
+@enduml
