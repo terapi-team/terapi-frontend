@@ -1,4 +1,4 @@
-@startuml DIAGRAMA DE CLASES - VERSIÓN 03
+@startuml DIAGRAMA DE CLASES - VERSIÓN 04
 
 ' === Definición de Enums ===
 
@@ -132,8 +132,8 @@ package "Notificaciones y Reseñas" {
 
       + publicar(): void
   }
-  Paciente "1" o-- "0..*" Reseña    : escribe
-  Terapeuta "1" o-- "0..*" Reseña   : recibe
+  Paciente "1" o-- "0..*" Resenia    : escribe
+  Terapeuta "1" o-- "0..*" Resenia   : recibe
 }
 
 package "Pagos y Finanzas" {
@@ -149,7 +149,7 @@ package "Pagos y Finanzas" {
   Paciente "1" o-- "0..*" MetodoPago : posee
 }
 
-package "Horarios y Cuentas" {
+package "Horarios" {
   class Horario <<entity>> {
       - id: int
       - diaSemana: DiaSemana
@@ -158,13 +158,5 @@ package "Horarios y Cuentas" {
   }
   Terapeuta "1" o-- "0..*" Horario : define
 
-  class CuentaBancaria <<entity>> {
-      - banco: string
-      - tipoCuenta: string
-      - numeroCuenta: string
-      - titular: string
-      - ruc: string
-  }
-  Terapeuta "1" o-- "1" CuentaBancaria : registra
 }
 @enduml
