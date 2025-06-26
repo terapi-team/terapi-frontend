@@ -1,0 +1,26 @@
+----------------
+-- DROP TABLAS
+----------------
+
+-- ELIMINAR TABLAS EN ORDEN CORRECTO
+DROP TABLE IF EXISTS Notificacion;
+DROP TABLE IF EXISTS Resenia;
+DROP TABLE IF EXISTS Horario;
+DROP TABLE IF EXISTS MetodoPago;
+DROP TABLE IF EXISTS Cita;
+DROP TABLE IF EXISTS Terapeuta;
+DROP TABLE IF EXISTS Paciente;
+DROP TABLE IF EXISTS Usuario;
+
+-- ELIMINAR TABLAS ENUMS
+DROP TABLE IF EXISTS Enum_DiaSemana;
+DROP TABLE IF EXISTS Enum_TipoCita;
+DROP TABLE IF EXISTS Enum_EstadoCita;
+DROP TABLE IF EXISTS Enum_TipoDocumento;
+DROP TABLE IF EXISTS Enum_EstadoRevision;
+DROP TABLE IF EXISTS Enum_Genero;
+DROP TABLE IF EXISTS Enum_Modalidad;
+DROP TABLE IF EXISTS Enum_Especialidad;
+
+-- Reiniciar autoincrement en SQLite (opcional)
+DELETE FROM sqlite_sequence;

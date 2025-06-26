@@ -1,5 +1,7 @@
 // IMPORTACIÓN: SDK y externos
-import 'package:get/get.dart';
+import 'dart:convert';                  // SDK: Para codificar y decodificar datos JSON
+import 'package:flutter/services.dart'; // FLUTTER: Para acceder a recursos como archivos locales (asset bundles)
+import 'package:get/get.dart';          // GETX: Para manejo de estado, navegación y dependencias
 
 // CLASE: Modelo de terapeuta
 class Therapist {
@@ -15,7 +17,6 @@ class Therapist {
 
   // CONSTRUCTOR
   Therapist({
-
     required this.nombre,
     required this.cedula,
     required this.idiomas,
@@ -23,8 +24,20 @@ class Therapist {
     required this.enfoque,
     required this.etiquetas,
     required this.imagen,
-
   }); // Therapist({
+
+  // FACTORY: Construye un objeto desde mapa JSON
+  factory Therapist.fromJson(Map<String, dynamic> json) {
+    return Therapist(
+      nombre: json['nombre'],
+      cedula: json['cedula'],
+      idiomas: List<String>.from(json['idiomas']),
+      nacionalidad: json['nacionalidad'],
+      enfoque: json['enfoque'],
+      etiquetas: List<String>.from(json['etiquetas']),
+      imagen: json['imagen'],
+    );
+  } // factory Therapist.fromJson
 
 } // class Therapist {
 
@@ -41,36 +54,21 @@ class PatientHomeSearchAppointmentsController extends GetxController {
     cargarTerapeutas();
   }
 
-  // MÉTODO: Cargar lista simulada de terapeutas
-  void cargarTerapeutas() {
+  // MÉTODO: Cargar lista de terapeutas desde archivo JSON
+  Future<void> cargarTerapeutas() async {
 
-    final lista = [
+    // LECTURA: Cargar contenido del archivo
+    final String jsonStr = await rootBundle.loadString('assets/data/sample_therapists.json');
 
-      Therapist(
-        nombre: "Dra. María García",
-        cedula: "970897",
-        idiomas: ["Español", "Inglés"],
-        nacionalidad: "Peruana",
-        enfoque: "Terapia Cognitivo-Conductual",
-        etiquetas: ["Ansiedad", "Depresión", "Estrés"],
-        imagen: "assets/images/therapists/maria.jpg",
-      ),
+    // DECODIFICACIÓN: Convertir string JSON a lista dinámica
+    final List data = json.decode(jsonStr);
 
-      Therapist(
-        nombre: "Dr. Carlos Rodríguez",
-        cedula: "849206",
-        idiomas: ["Español"],
-        nacionalidad: "Peruana",
-        enfoque: "Psicología Clínica",
-        etiquetas: ["Terapia de Pareja", "Autoestima", "Relaciones"],
-        imagen: "assets/images/therapists/carlos.jpg",
-      ),
+    // PARSEO: Convertir cada elemento en objeto Therapist
+    final lista = data.map((e) => Therapist.fromJson(e)).toList();
 
-    ]; // lista
-
-    // ACTUALIZACIÓN: Asigna la lista a la variable observable
+    // ACTUALIZACIÓN: Asignar lista al observable
     terapeutas.value = lista;
 
-  } // void cargarTerapeutas
+  } // Future<void> cargarTerapeutas
 
 } // class PatientHomeSearchAppointmentsController extends GetxController {
