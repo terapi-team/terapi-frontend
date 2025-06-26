@@ -1,0 +1,13 @@
+{
+  "usuarios": [
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "cityslicka"
+    },
+    {
+      "email": "messi@goat.com",
+      "password": "balondeoro"
+    }
+  ]
+}
+
