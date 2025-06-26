@@ -78,26 +78,26 @@ INSERT INTO Paciente (usuario_id, fechaRegistro) VALUES
 
 -- TERAPEUTA
 INSERT INTO Terapeuta (usuario_id, descripcion, experienciaAnios, calificacionPromedio, genero, pais, especialidades, idiomas) VALUES
-(21, 'Terapia integrativa en adultos', 7, 4.8, 'Masculino', 'Perú', 'Psicologia', 'Español,Inglés'),
-(22, 'Especialista en terapia de duelo', 9, 4.9, 'Femenino', 'Chile', 'Psicologia', 'Español'),
-(23, 'Intervención temprana infantil', 4, 4.5, 'Masculino', 'Perú', 'Fisioterapia', 'Español'),
-(24, 'Rehabilitación física post-accidente', 6, 4.6, 'Femenino', 'Argentina', 'Fisioterapia', 'Español,Inglés'),
-(25, 'Terapias alternativas y mindfulness', 8, 4.7, 'Masculino', 'México', 'Psicologia', 'Español'),
-(26, 'Psicoterapia humanista', 5, 4.3, 'Femenino', 'Perú', 'Psicologia', 'Español'),
-(27, 'Apoyo emocional para adultos mayores', 11, 4.6, 'Masculino', 'Colombia', 'Psicologia', 'Español'),
-(28, 'Logopedia para niños con dislexia', 3, 4.4, 'Femenino', 'Perú', 'Logopedia', 'Español'),
-(29, 'Terapia ocupacional para movilidad', 7, 4.5, 'Masculino', 'Chile', 'TerapiaOcupacional', 'Español'),
-(30, 'Terapia conductual en adolescentes', 6, 4.7, 'Femenino', 'Perú', 'Psicologia', 'Español,Inglés'),
-(31, 'Atención psicológica para adultos', 8, 4.6, 'Masculino', 'Perú', 'Psicologia', 'Español'),
-(32, 'Terapias de afrontamiento emocional', 5, 4.5, 'Femenino', 'México', 'Psicologia', 'Español,Inglés'),
-(33, 'Rehabilitación motora infantil', 6, 4.7, 'Masculino', 'Chile', 'Fisioterapia', 'Español'),
-(34, 'Terapia familiar y de pareja', 9, 4.8, 'Femenino', 'Perú', 'Psicologia', 'Español'),
-(35, 'Psicoterapia individual adultos', 7, 4.6, 'Masculino', 'Colombia', 'Psicologia', 'Español'),
-(36, 'Psicología educativa y vocacional', 4, 4.4, 'Femenino', 'Argentina', 'Psicologia', 'Español'),
-(37, 'Intervención en crisis emocionales', 10, 4.7, 'Masculino', 'Perú', 'Psicologia', 'Español,Inglés'),
-(38, 'Logopedia para niños con TEA', 3, 4.3, 'Femenino', 'Perú', 'Logopedia', 'Español'),
-(39, 'Psicología ocupacional', 6, 4.5, 'Masculino', 'Chile', 'Psicologia', 'Español'),
-(40, 'Orientación emocional para adolescentes', 5, 4.6, 'Femenino', 'Perú', 'Psicologia', 'Español');
+(21, 'Terapia integrativa en adultos', 7, 4.8, 'Masculino', 'Peru', 'Psicologia', 'Espanol,Ingles'),
+(22, 'Especialista en terapia de duelo', 9, 4.9, 'Femenino', 'EstadosUnidos', 'Psicologia', 'Espanol'),
+(23, 'Intervención temprana infantil', 4, 4.5, 'Masculino', 'Peru', 'Fisioterapia', 'Espanol'),
+(24, 'Rehabilitación física post-accidente', 6, 4.6, 'Femenino', 'EstadosUnidos', 'Fisioterapia', 'Espanol,Ingles'),
+(25, 'Terapias alternativas y mindfulness', 8, 4.7, 'Masculino', 'EstadosUnidos', 'Psicologia', 'Espanol'),
+(26, 'Psicoterapia humanista', 5, 4.3, 'Femenino', 'Peru', 'Psicologia', 'Espanol'),
+(27, 'Apoyo emocional para adultos mayores', 11, 4.6, 'Masculino', 'EstadosUnidos', 'Psicologia', 'Espanol'),
+(28, 'Logopedia para niños con dislexia', 3, 4.4, 'Femenino', 'Peru', 'Logopedia', 'Espanol'),
+(29, 'Terapia ocupacional para movilidad', 7, 4.5, 'Masculino', 'EstadosUnidos', 'TerapiaOcupacional', 'Espanol'),
+(30, 'Terapia conductual en adolescentes', 6, 4.7, 'Femenino', 'Peru', 'Psicologia', 'Espanol,Ingles'),
+(31, 'Atención psicológica para adultos', 8, 4.6, 'Masculino', 'Peru', 'Psicologia', 'Espanol'),
+(32, 'Terapias de afrontamiento emocional', 5, 4.5, 'Femenino', 'EstadosUnidos', 'Psicologia', 'Espanol,Ingles'),
+(33, 'Rehabilitación motora infantil', 6, 4.7, 'Masculino', 'EstadosUnidos', 'Fisioterapia', 'Espanol'),
+(34, 'Terapia familiar y de pareja', 9, 4.8, 'Femenino', 'Peru', 'Psicologia', 'Espanol'),
+(35, 'Psicoterapia individual adultos', 7, 4.6, 'Masculino', 'EstadosUnidos', 'Psicologia', 'Espanol'),
+(36, 'Psicología educativa y vocacional', 4, 4.4, 'Femenino', 'EstadosUnidos', 'Psicologia', 'Espanol'),
+(37, 'Intervención en crisis emocionales', 10, 4.7, 'Masculino', 'Peru', 'Psicologia', 'Espanol,Ingles'),
+(38, 'Logopedia para niños con TEA', 3, 4.3, 'Femenino', 'Peru', 'Logopedia', 'Espanol'),
+(39, 'Psicología ocupacional', 6, 4.5, 'Masculino', 'EstadosUnidos', 'Psicologia', 'Espanol'),
+(40, 'Orientación emocional para adolescentes', 5, 4.6, 'Femenino', 'Peru', 'Psicologia', 'Espanol');
 
 ---------------------------------------
 -- [03] CLASES DEPENDIENTES - NIVEL 2
